@@ -1,10 +1,17 @@
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
+@font-face {
+    font-family: 'Montserrat', sans-serif;
+    src: url('assets/fonts/Montserrat-Regular.ttf') format('ttf'),
+         url('assets/fonts/Montserrat-Medium.ttf') format('ttf'),
+         url('assets/fonts/Montserrat-Bold.ttf') format('ttf'),
+         url('assets/fonts/Montserrat-SemiBold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body{
 	margin:0;
-	font-family: 'Montserrat',sans-sarif;
+	font-family: 'Montserrat', sans-sarif;
+	font-weight: 400;
 	background-color: #EBEDEF;
 	padding-top: 90px;
 }
@@ -47,16 +54,15 @@ nav.menu ul{
 
 nav.menu ul li a{
 	font-size: 14px;
-	font-weight: 600;
 	text-transform: uppercase;
 	text-decoration: none;
 	color: #D0D1D5;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 500px;
+	font-weight: 900px;
 	display: block;
-	padding-top:30px;
+	padding-top:29px;
 	padding-bottom: 20px;
 }
+
 
 nav.menu ul li a:hover, nav.menu ul li a:active{
 	color: #009688;
@@ -100,6 +106,7 @@ nav.menu ul li a:hover, nav.menu ul li a:active{
 	height: 27px;
 	background-color: #009688;
 	color: #ffffff;
+	font-size: 15px;
 	height: 35px;
 }
 
@@ -142,8 +149,30 @@ nav.menu ul li a:hover, nav.menu ul li a:active{
 	height: 37px;
 	border-top-left-radius: 12px;
 	border-top-right-radius: 12px;
+	font-size: 18px;
+	
 }
 
+.nav > li > a {
+   position: relative;
+    padding: 9px;
+    margin-left: -1px;
+    color: #000000;
+    text-decoration: none;
+    background-color:#F5F5F5;
+    border: none;
+	font-size: 16px;
+}
+
+.nav > li > a:hover{
+	border-bottom-style: solid;
+	border-width: 1px;
+	border-color: red;
+	border-radius: 0px;
+	color:#31344F;	
+}
+
+/*
 .pagination {
     display: inline-block;
     padding-left: 0;
@@ -171,6 +200,10 @@ ul.pagination li a:hover{
 	color:#31344F;
 }
 
+*/
+
+
+
 
 /*--====== ALL QUESTION AREA ======*/
 
@@ -178,11 +211,10 @@ ul.pagination li a:hover{
     margin-left: 12px;
     margin-top: 12px;
     margin-right: 12px;
-    font-size: 12px;
 }
 
 .media-heading{
-	font-size: 13px;
+	font-size: 12px;
 	color: #B9BBC1;
 }
 
@@ -199,7 +231,7 @@ ul.pagination li a:hover{
 /*--====== ans-time class======--*/
 
 .ans-time{
-	font-size: 13px;
+	font-size: 12px;
 	color: #B9BBC1;
 	margin-right: 19px;
 }
@@ -208,7 +240,7 @@ ul.pagination li a:hover{
 
 .qn-area{
     color: #31344F;
-    font-size: 14px;
+    font-size: 15px;
     background-color: #F5F5F5;
     border-radius: 8px;
     height: auto;
@@ -257,8 +289,7 @@ p.qn-area a:active{
     padding-top: 20px;
     text-align: center;
     color: #E1E2E5;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400px;
+	font-size:15px;
 }
 
 /*--====== CREATE A QUESTION HERE 3D BUTTON  ======*/
@@ -272,7 +303,7 @@ p.qn-area a:active{
 	margin-bottom: 10px;
 	margin-left: 2px;
 	margin-right: 2px;
-	font-size: 14px;
+	font-size: 16px;
 	width: 230px;
 }
 
@@ -319,7 +350,6 @@ p.qn-area a:active{
 
  .pass-word input[type=password]{
 	margin-top: -20px;
-
 }
 
 /*======ADD ICON IN USER NAME AND PASSWORD===*/
@@ -412,8 +442,8 @@ p.qn-area a:active{
 
 .sign_up_text{
 	color: #ffffff;
-	font-size: 14px;
-	padding-bottom: 10px;
+	font-size: 15px;
+	padding-bottom: 3px;
 }
 
 /*--====== SIGN UP 3D BUTTON  ======*/
@@ -427,7 +457,7 @@ p.qn-area a:active{
 	margin-bottom: 10px;
 	margin-left: 0px;
 	margin-right: 2px;
-	font-size: 14px;
+	font-size: 16px;
 	width: 226px;
 }
 
@@ -475,9 +505,10 @@ p.qn-area a:active{
 
 .categories-header p{
 	text-align: center;
-	font-size: 16px;
+	font-size: 17px;
+	font-weight:700px;
 	color:#ffffff;
-	padding-top: 8px;
+	padding-top: 7px;
 }
 
 /*--=====CATEGORIES AREA LIST GROUP====*/
@@ -491,15 +522,15 @@ ul.list-group{
 	border-radius: 0px;
 	color: #ffffff;
 	border:none;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .list-group a{
 	text-decoration: none;
 }
 
-ul.list-group a li:hover, ul.list-group a li:active,
-ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
+ul.list-group a li:hover, ul.list-group a li:active
+{
 	border-width: 1px;  
     border-bottom-style: dashed;
     border-color: #ffffff;
@@ -509,9 +540,9 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
 /*--====== CATEGORIES AREA LIST GROUP BADGE  ======*/
 
 .badge{
-	background-color: #31344F;
-	font-size: 12px;
+	font-size: 14px;
 }
+
 
 
 
@@ -526,9 +557,7 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
 	padding-top:30px;
 	padding-bottom: 20px;
 	color:#D0D1D5;
-	font-family: 'Montserrat', sans-serif;
-	font-size: 14px;
-	font-weight: 400px;
+	font-size: 16px;
 }
 
 .glyphicon{
@@ -554,7 +583,7 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
     height: auto;
     border-radius: 12px;
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 .registration-content-header{
@@ -568,7 +597,7 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
 .reg-text{
 	font-size: 16px;
 	color:#31344F;
-	padding-top: 8px;
+	padding-top: 6px;
 }
 
 
@@ -602,6 +631,24 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
 
 
 /*--====== REGISTRATION AREA ICON ADD ======*/
+
+.icon-input-btn .fa-upload{
+    position:relative;
+	display: inline-block;
+	float:right;
+}   
+ 
+.icon-input-btn .fa-upload:before {
+    font-family: FontAwesome;
+    position: absolute;
+	top: 3px;
+	right: 10px;
+	font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #C4C4C4;
+    font-size: 19px;
+}
 
 .icon-input-btn .fa-user{
     position:relative;
@@ -690,7 +737,7 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
 	margin-right: 2px;
 	margin-top: 17px;
     margin-bottom: 70px;
-	font-size: 14px;
+	font-size: 16px;
 	width: 56%;
 }
 
@@ -725,7 +772,7 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
 .qn-ans{
 	font-size: 16px;
 	color:#31344F;
-	padding-top: 8px;
+	padding-top: 6px;
 }
 
 /*--====== ALL ANSWER AREA  ======*/
@@ -758,7 +805,7 @@ ul.list-group a li span.badge:hover,ul.list-group a li span.badge:active{
 .qn-content-header p{
 	font-size: 16px;
 	color:#31344F;
-	padding-top: 9px;
+	padding-top: 6px;
 }
 
 /*--=====SELECT CATEGORIES START=====--*/
@@ -777,6 +824,7 @@ select{
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
+	font-size:16px;
 }
 
 /*--=====MESSAGAE TEXT AREA=====--*/
@@ -789,6 +837,7 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
+	font-size:15px;
 
 }
 
@@ -803,6 +852,7 @@ textarea {
     cursor: pointer;
 	margin: 0 auto;
 	margin-bottom: 20px;
+	font-size:16px;
 }
 
 
@@ -820,7 +870,8 @@ textarea {
 	background-color: #009688;
 	border: none;
 	border-radius: 4px;
-	margin-bottom: 12px;
+	margin-bottom: 14px;
+	font-size:16px;
 }
 
 
@@ -839,7 +890,7 @@ textarea {
 .doc-text-specific-doc{
 	font-size: 16px;
 	color:#31344F;
-	padding-top: 8px;
+	padding-top: 7px;
 }
 
 .doc-review-specific-doc-header{
@@ -881,7 +932,7 @@ button.download-button:hover a {
 }
 
 button.download-button p {
-    font-size: 13px;
+    font-size: 14px;
     padding-top: 5px;
     color: #ffffff;
 }
@@ -916,7 +967,7 @@ button.upload-button:hover a {
 }
 
 button.upload-button p {
-    font-size: 13px;
+    font-size: 14px;
     padding-top: 5px;
     color: #ffffff;
     padding-right: 5px;
@@ -934,7 +985,7 @@ button.upload-button .glyphicon{
 .doc-request-text{
 	font-size: 16px;
 	color:#31344F;
-	padding-top: 9px;
+	padding-top: 6px;
 }
 
 .request-doc-review-area{

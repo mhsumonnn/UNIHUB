@@ -44,13 +44,13 @@
 						?>
 						
 						<div class="registration-form">
-							<form action="includes/register.inc.php" method="POST">
+							<form action="includes/register.inc.php" method="POST" enctype="multipart/form-data">
 								
-							<!--	<div class="form-group">
-									<div class="icon-input"><button class="browse-btn">Browse...</button>
-										<input type="text" name="myfile" id="photo" placeholder="Upload Your Photo" class="form-control" autofocus required>
+							<div class="form-group">
+									<div class="icon-input-btn"><i class="fas fa-user"></i><!--<button class="browse-btn">Browse...</button>-->
+										<input type="file" name="image" placeholder="Upload Your Photo" class="form-control" autofocus required>
 									</div>	
-								</div> -->
+								</div>
 								
 								<div class="form-group">
 									<div class="icon-input-btn"><i class="fas fa-user"></i>	
@@ -65,7 +65,7 @@
 								</div>
 								
 								<div class="form-group">
-									<div class="icon-input-btn"><i class="fas fa-phone"></i>
+									<div class="icon-input-btn"><i class="fas fa-user"></i>
 										<input type="text" name="uname" placeholder="Username" class="form-control" autofocus required>
 									</div>	
 								</div>

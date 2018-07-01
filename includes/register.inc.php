@@ -46,11 +46,18 @@ if (isset($_POST['submit'])){
 						header("Location: ../register.php?reg=usertaken");
 						exit();
 					} else {
+
+						// Path to store the uploaded image
+						$image = $uname.'.'.strtolower(end(explode('.', $_FILES['image']['name'])));
+						$target = "../uploads/profile-pic/".$image;
+						move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
 						// Hashing the password
 						$hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
 						// Finally insert into database
-						$sql = "INSERT INTO users (user_first, user_last, user_name, user_email, user_pwd) VALUES ('$first', '$last', '$uname', '$email', '$hashedPassword')";
+						$sql = "INSERT INTO users (user_first, user_last, user_name, user_email, user_pwd, image) VALUES ('$first', '$last', '$uname', '$email', '$hashedPassword', '$image')";
 						mysqli_query($conn, $sql);
+
 
 						$sql = "SELECT user_id FROM users WHERE user_email='$email'";
 						$uid = mysqli_query($conn, $sql);

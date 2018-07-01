@@ -1,0 +1,14 @@
+----- Include User Profile Image
+
+----- Chat System
+
+----- Question and Answer
+      ---- Reply option need to have image posting capability
+		(It may implement by Plugin called Tiny MCE)
+		https://www.tinymce.com/
+
+----- Searching Questions
+
+----- Admin Privilages
+      ---- Creating Category
+      ---- Removing Category
