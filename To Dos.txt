@@ -1,4 +1,4 @@
------ Include User Profile Image
+----- (Done) Include User Profile Image
 
 ----- Chat System
 

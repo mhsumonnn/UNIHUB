@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2018 at 09:20 AM
+-- Generation Time: Jul 01, 2018 at 09:28 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -35,17 +35,9 @@ CREATE TABLE `users` (
   `user_name` varchar(255) NOT NULL,
   `user_email` varchar(255) NOT NULL,
   `user_pwd` varchar(255) NOT NULL,
-  `user_active` int(2) NOT NULL
+  `user_active` int(2) NOT NULL,
+  `image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `user_first`, `user_last`, `user_name`, `user_email`, `user_pwd`, `user_active`) VALUES
-(4, 'Hasan', 'Sumon', 'sumon', 'email@gmail.com', '$2y$10$2VHGQlW3ty8TLREHUUzcoO8muQcx9S7Ar6hAaU/t4oZrLAHn8O8Gq', 0),
-(5, 'Himel', 'Khan', 'himel', 'himel@gmail.com', '$2y$10$IvJJoZRgNwOFAzMY5VxsHetjxyPbGlXqjTRsBtkg7x/HeyIIc7Qoq', 0),
-(6, 'Hasan', 'Sumon', 'user', 'email@email.com', '$2y$10$XDFCZiyGTLynjgfiyfKJ5.1f5U2s2/0rurWWGmFtQXf9uIuoTKdmq', 0);
 
 --
 -- Indexes for dumped tables
@@ -65,7 +57,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

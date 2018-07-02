@@ -181,7 +181,7 @@
             <div class="create-questions-area text-right"> <!--====== CREATE QUESTION AREA START ======--> 
                 <p>Want to know something?</p>
                 <div class="create-account-button text-center">
-                   <a href="create-qn-area.html" button type="button" class="btn btn-success btn-lg btn3d">Create a Question Here</button></a>
+                   <a href="create-question.php" button type="button" class="btn btn-success btn-lg btn3d">Create a Question Here</button></a>
                 </div>
             </div><!--====== CREATE QUESTION AREA END ======--> 
                
