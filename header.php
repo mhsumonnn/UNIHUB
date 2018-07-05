@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+include 'includes/utility.inc.php';
+
 ?>
 
 

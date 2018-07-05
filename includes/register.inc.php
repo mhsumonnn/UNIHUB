@@ -60,13 +60,16 @@ if (isset($_POST['submit'])){
 
 
 						$sql = "SELECT user_id FROM users WHERE user_email='$email'";
-						$uid = mysqli_query($conn, $sql);
+						$result = mysqli_query($conn, $sql);
+						$row = $result->fetch_assoc();
+						$uid = $row['user_id'];
 
 						$_SESSION['uid'] = $uid;
 						$_SESSION['first'] = $first;
 						$_SESSION['last'] = $last;
 						$_SESSION['uname'] = $uname;
 						$_SESSION['email'] = $email;
+						$_SESSION['image'] = $image;
 
 						header("Location: ../index.php?reg=success");
 						exit();
