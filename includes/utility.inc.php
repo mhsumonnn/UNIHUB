@@ -438,7 +438,7 @@
 
 
 
-	/*function allSearchQuestion($qusId){
+	function searchQusView($qusId, $keys){
 		include 'dbh.inc.php';
 
 		$result = mysqli_query($conn, "SELECT * FROM question WHERE qus_id='$qusId'");
@@ -453,6 +453,13 @@
 		$answered = $row['answered'];
 		$view = $row['view'];
 		$vote = $row['vote'];
+
+		$keywords = explode(' ', $keys);
+		foreach ($keywords as $value) {
+			$pattern = '/'.$value.'/';
+			$replacement = '<span style="background-color: #ff6600; color: #ffffff;">'.$value.'</span>';
+			$question = preg_replace($pattern, $replacement, $question);
+		}
 
 		$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 		$array = mysqli_fetch_assoc($userInfo);
@@ -476,108 +483,9 @@
 				</div>
 					<hr class="content-line">
 			</div>';			
-
-	}
-
-
-	function answeredSearchQuestion($qusId){
-		include 'dbh.inc.php';
-
-		$result = mysqli_query($conn, "SELECT * FROM question WHERE answered != 0 AND qus_id='$qusId'");
-
-		$row = mysqli_fetch_assoc($result);
-		
-		$qusId = $row['qus_id'];
-		$catId = $row['cat_id'];
-		$userId = $row['user_id'];
-		$question = $row['question'];
-		$postTime = $row['post_time'];
-		$answered = $row['answered'];
-		$view = $row['view'];
-		$vote = $row['vote'];
-
-		$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
-		$array = mysqli_fetch_assoc($userInfo);
-		$userName = $array['user_first'] .' '. $array['user_last'];
-		$image = 'uploads/profile-pic/'.$array['image'];
-		$posted = postTime($postTime);
-
-		$qusInfo = 'Answered '.$answered.' / Viewed '.$view;
-		$url = 'question.php?qusId='.$qusId;
-
-		echo '<div class="media">
-				<div class="media-left">
-					<img src="'.$image.'" class="media-object" style="width:60px">
-				</div>
-					   
-				<div class="media-body">
-					<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
-						<p class="qn-area"><span class="question">
-						<a href="'.$url.'">Question: </span>'.$question.'</p></a>
-						<p class="ans-time text-right">'.$qusInfo.' </p>
-				</div>
-					<hr class="content-line">
-			</div>';
-	}
-
-
-
-	function unansweredSearchCatQuestion($qusId){
-		include 'dbh.inc.php';
-
-		$result = mysqli_query($conn, "SELECT * FROM question WHERE answered = 0 AND qus_id='$qusId'");
-
-		$row = mysqli_fetch_assoc($result);
-		
-		$qusId = $row['qus_id'];
-		$catId = $row['cat_id'];
-		$userId = $row['user_id'];
-		$question = $row['question'];
-		$postTime = $row['post_time'];
-		$answered = $row['answered'];
-		$view = $row['view'];
-		$vote = $row['vote'];
-
-		$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
-		$array = mysqli_fetch_assoc($userInfo);
-		$userName = $array['user_first'] .' '. $array['user_last'];
-		$image = 'uploads/profile-pic/'.$array['image'];
-		$posted = postTime($postTime);
-
-		$qusInfo = 'Answered '.$answered.' / Viewed '.$view;
-		$url = 'question.php?qusId='.$qusId;
-
-		echo '<div class="media">
-				<div class="media-left">
-					<img src="'.$image.'" class="media-object" style="width:60px">
-				</div>
-					   
-				<div class="media-body">
-					<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
-						<p class="qn-area"><span class="question">
-						<a href="'.$url.'">Question: </span>'.$question.'</p></a>
-						<p class="ans-time text-right">'.$qusInfo.' </p>
-				</div>
-					<hr class="content-line">
-			</div>';
-	}*/
-
 	
+	}
 
-/*	<div class="media">
-		<div class="media-left">
-			<img src="assets/images/avatar_2.png" class="media-object" style="width:60px">
-		</div>
-			   
-		<div class="media-body">
-			<h4 class="media-heading">John Doe asked 1 Hour 20 Minute before</h4>
-				<p class="qn-area"><span class="question">
-				<a href="answer.html">Question:</span> What are the difference between high level and low level programing language? 
-				How does they differ from each other?</p></a>
-				<p class="ans-time text-right">Answered 02/ Voted 01 / Viewed 16 </p>
-		</div>
-			<hr class="content-line">
-	</div>*/
 
 
 

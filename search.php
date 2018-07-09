@@ -49,7 +49,7 @@ else{
 							<?php
 								$result = mysqli_query($conn, $sql);
 								while($row = mysqli_fetch_assoc($result))
-									questionView($row['qus_id']);
+									searchQusView($row['qus_id'], $noCommon);
 							?>
 
 				
@@ -64,7 +64,7 @@ else{
 								$result = mysqli_query($conn, $sql);
 								while($row = mysqli_fetch_assoc($result)){
 									if($row['answered'] != 0)
-										questionView($row['qus_id']);
+										searchQusView($row['qus_id'], $noCommon);
 								}
 							?>
 	
@@ -79,7 +79,7 @@ else{
 								$result = mysqli_query($conn, $sql);
 								while($row = mysqli_fetch_assoc($result)){
 									if($row['answered'] == 0)
-										questionView($row['qus_id']);
+										searchQusView($row['qus_id'], $noCommon);
 								}
 							?>
 
