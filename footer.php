@@ -14,9 +14,9 @@
         <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <!--=== All Plugin ===-->
         <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="assets/js/plugin/wow.min.js"></script>
-        <script type="text/javascript" src="assets/js/plugin/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="assets/js/plugin/jquery.magnific-popup.min.js"></script>
+        <script tyoe="text/javascript" src="assets/plugins/tinymce/tinymce.min.js"></script>
+        <script tyoe="text/javascript" src="assets/plugins/tinymce/init-tinymce.js"></script>
+        <script type="text/javascript" src="assets/js/prism.js"></script>
 
         <!--=== All Active ===-->
         <script type="text/javascript" src="assets/js/main.js"></script>

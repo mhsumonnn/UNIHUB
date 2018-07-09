@@ -2,12 +2,12 @@
 
 ----- Chat System
 
------ Question and Answer
+----- (Done) Question and Answer
       ---- Reply option need to have image posting capability
 		(It may implement by Plugin called Tiny MCE)
 		https://www.tinymce.com/
 
------ Searching Questions
+----- (Done) Searching Questions
 
 ----- Admin Privilages
       ---- Creating Category

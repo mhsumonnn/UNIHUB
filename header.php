@@ -21,6 +21,7 @@ include 'includes/utility.inc.php';
         <link rel="stylesheet" href="style.css">
         <!--=== Responsive Css ===-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/prism.css">
         
 		<script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 	

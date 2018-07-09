@@ -90,24 +90,8 @@
 					</div><!--====== REGISTRATION CONTENT AREA END ======-->
 				</div><!--====== col-md-9 div END======-->
 			   
+				<?php include 'rightbar.php'?>
 
-				<div class="col-md-3">
-					<div class="categories-area"><!--====== CATEGORIES AREA START ======-->
-						<div class="categories-header"><!--====== CATEGORIES AREA HEADER ======-->
-							<p>Categories</p>
-						</div>
-						<ul class="list-group"><!--====== CATEGORIES LIST ======-->
-							<a href="#"><li class="list-group-item">Programming<span class="badge">10</span></li></a>
-							<a href="#"><li class="list-group-item">Networking<span class="badge">30</span></li></a>                       
-							<a href="#"><li class="list-group-item">Discrete Mathematics<span class="badge">3</span></li></a>
-							<a href="#"><li class="list-group-item">Database<span class="badge">14</span></li></a>
-							<a href="#"><li class="list-group-item">Operating System<span class="badge">6</span></li></a>
-							<a href="#"><li class="list-group-item">MATLAB<span class="badge">26</span></li></a>
-							<a href="#"><li class="list-group-item">Computer Graphics<span class="badge">12</span></li></a>
-							<a href="#"><li class="list-group-item">Image Processing<span class="badge">4</span></li></a>
-						</ul>
-					</div>  <!--====== CATEGORIES AREA END ======-->	
-				</div><!--col-md-3 div END-->		   
 			</div><!--====== row div END======-->
 		</div><!--====== Container div END======-->
 	</section><!--====== REGISTRATION SECTION SECTION END ======-->
