@@ -9,6 +9,8 @@
 
 ----- (Done) Searching Questions
 
+----- (Done) User Profile View / Edit
+
 ----- Admin Privilages
       ---- Creating Category
       ---- Removing Category

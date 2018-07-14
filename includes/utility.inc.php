@@ -104,7 +104,8 @@
 
 				$user = mysqli_query($conn, "SELECT user_first, user_last FROM users WHERE user_id='$userid'");
 				$res = mysqli_fetch_assoc($user);
-				$name = $res['user_first'] .' '. $res['user_last']; 
+				$name = $res['user_first'] .' '. $res['user_last'];
+				$nameLink = '<a href="user.php?userId='.$userid.'">'.$name.'</a>'; 
 
 				echo '<hr class="content-line">
 					<div class="media">
@@ -113,7 +114,7 @@
 						</div>
 
 						<div class="media-body">
-							<h4 class="media-heading">'.$name.' replied: </h4>
+							<h4 class="media-heading">'.$nameLink.' replied: </h4>
 							<div class="qn-area">'.$row['ans_detail'].'</div>
 						</div>
 					</div>';
@@ -154,6 +155,7 @@
 			$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 			$array = mysqli_fetch_assoc($userInfo);
 			$userName = $array['user_first'] .' '. $array['user_last'];
+			$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 			$image = 'uploads/profile-pic/'.$array['image'];
 			$posted = postTime($postTime);
 
@@ -166,7 +168,7 @@
 					</div>
 						   
 					<div class="media-body">
-						<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+						<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 							<p class="qn-area"><span class="question">
 							<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 							<p class="ans-time text-right">'.$qusInfo.' </p>
@@ -196,6 +198,7 @@
 			$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 			$array = mysqli_fetch_assoc($userInfo);
 			$userName = $array['user_first'] .' '. $array['user_last'];
+			$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 			$image = 'uploads/profile-pic/'.$array['image'];
 			$posted = postTime($postTime);
 
@@ -208,7 +211,7 @@
 					</div>
 						   
 					<div class="media-body">
-						<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+						<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 							<p class="qn-area"><span class="question">
 							<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 							<p class="ans-time text-right">'.$qusInfo.' </p>
@@ -239,6 +242,7 @@
 			$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 			$array = mysqli_fetch_assoc($userInfo);
 			$userName = $array['user_first'] .' '. $array['user_last'];
+			$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 			$image = 'uploads/profile-pic/'.$array['image'];
 			$posted = postTime($postTime);
 
@@ -251,7 +255,7 @@
 					</div>
 						   
 					<div class="media-body">
-						<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+						<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 							<p class="qn-area"><span class="question">
 							<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 							<p class="ans-time text-right">'.$qusInfo.' </p>
@@ -286,6 +290,7 @@
 			$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 			$array = mysqli_fetch_assoc($userInfo);
 			$userName = $array['user_first'] .' '. $array['user_last'];
+			$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 			$image = 'uploads/profile-pic/'.$array['image'];
 			$posted = postTime($postTime);
 
@@ -298,7 +303,7 @@
 					</div>
 						   
 					<div class="media-body">
-						<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+						<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 							<p class="qn-area"><span class="question">
 							<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 							<p class="ans-time text-right">'.$qusInfo.' </p>
@@ -328,6 +333,7 @@
 			$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 			$array = mysqli_fetch_assoc($userInfo);
 			$userName = $array['user_first'] .' '. $array['user_last'];
+			$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 			$image = 'uploads/profile-pic/'.$array['image'];
 			$posted = postTime($postTime);
 
@@ -340,7 +346,7 @@
 					</div>
 						   
 					<div class="media-body">
-						<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+						<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 							<p class="qn-area"><span class="question">
 							<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 							<p class="ans-time text-right">'.$qusInfo.' </p>
@@ -371,6 +377,7 @@
 			$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 			$array = mysqli_fetch_assoc($userInfo);
 			$userName = $array['user_first'] .' '. $array['user_last'];
+			$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 			$image = 'uploads/profile-pic/'.$array['image'];
 			$posted = postTime($postTime);
 
@@ -383,7 +390,7 @@
 					</div>
 						   
 					<div class="media-body">
-						<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+						<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 							<p class="qn-area"><span class="question">
 							<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 							<p class="ans-time text-right">'.$qusInfo.' </p>
@@ -414,6 +421,7 @@
 		$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 		$array = mysqli_fetch_assoc($userInfo);
 		$userName = $array['user_first'] .' '. $array['user_last'];
+		$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 		$image = 'uploads/profile-pic/'.$array['image'];
 		$posted = postTime($postTime);
 
@@ -426,7 +434,7 @@
 				</div>
 					   
 				<div class="media-body">
-					<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+					<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 						<p class="qn-area"><span class="question">
 						<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 						<p class="ans-time text-right">'.$qusInfo.' </p>
@@ -464,6 +472,7 @@
 		$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
 		$array = mysqli_fetch_assoc($userInfo);
 		$userName = $array['user_first'] .' '. $array['user_last'];
+		$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
 		$image = 'uploads/profile-pic/'.$array['image'];
 		$posted = postTime($postTime);
 
@@ -476,7 +485,7 @@
 				</div>
 					   
 				<div class="media-body">
-					<h4 class="media-heading">'.$userName.' asked '.$posted.'</h4>
+					<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 						<p class="qn-area"><span class="question">
 						<a href="'.$url.'">Question: </span>'.$question.'</p></a>
 						<p class="ans-time text-right">'.$qusInfo.' </p>

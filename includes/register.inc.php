@@ -54,11 +54,14 @@ if (isset($_POST['submit'])){
 
 						// Hashing the password
 						$hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
+						// User creation date
+						date_default_timezone_set("Asia/Dhaka");
+						$dateTime = date("Y-m-d H:i:s");
 						// Finally insert into database
-						$sql = "INSERT INTO users (user_first, user_last, user_name, user_email, user_pwd, image) VALUES ('$first', '$last', '$uname', '$email', '$hashedPassword', '$image')";
+						$sql = "INSERT INTO users (user_first, user_last, user_name, user_email, user_pwd, user_created, image) VALUES ('$first', '$last', '$uname', '$email', '$hashedPassword', '$dateTime', '$image')";
 						mysqli_query($conn, $sql);
 
-
+						// Fetch user information for session data
 						$sql = "SELECT user_id FROM users WHERE user_email='$email'";
 						$result = mysqli_query($conn, $sql);
 						$row = $result->fetch_assoc();

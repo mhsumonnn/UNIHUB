@@ -994,3 +994,326 @@ button.upload-button .glyphicon{
     margin-right: 12px;
     font-size: 12px;
 }
+
+
+
+
+
+
+
+
+/*--====== 09/06/2018 ======*/
+
+
+
+/*--========== USER PROFILE PAGE STYLE START============*/
+
+
+/*--=============USER PROFILE AREA==============*/
+
+.user-profile-area {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    height: auto;
+    margin-top: 0px;
+    margin-bottom: 12px;
+}
+
+
+.user-profile-text{
+	font-size: 16px;
+	color:#31344F;
+	padding-top: 6px;
+}
+
+
+
+/*--====== USER PROFILE HEADER AREA ======*/
+
+.user-profile-header {
+	background-color: #F5F5F5;
+	height: 37px;
+	border-top-left-radius:3px;
+	border-top-right-radius: 3px;
+	font-size: 18px;
+	
+}
+
+.pro-pic{
+
+	margin-top: 34px;
+}
+
+
+/*--====== UPLOAD IMAGES ======*/
+
+
+ input.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+#profile-image1 {
+    width: 200px;
+    height: 200px;
+	border:2px solid #03b1ce ;
+}
+
+
+/*--MSG-pop starts here--*/
+.msg-pop{
+	width:100%;
+ 	padding:20px;
+	text-align:center;
+}
+
+
+#ignismyModal .modal-header{
+    border:0px;
+}
+
+
+.msg-btn{
+display: inline-block;
+padding: 6px 12px;
+margin-top: 4px;
+font-size: 14px;
+background-color: #009688;
+color: #ffffff;
+width: 102px;
+
+}
+
+.msg-btn:hover{
+color: #ffffff;
+}
+
+
+.send-msg-btn{
+
+display: inline-block;
+padding: 6px 12px;
+font-size: 14px;
+background-color: #009688;
+color: #ffffff;
+width: 30%;
+
+}
+
+
+.send-msg-btn:hover{
+
+	color: #ffffff;
+}
+
+/*--========== Edit USER PROFILE PAGE STYLE START============*/
+
+.edit-profile-btn{
+display: inline-block;
+padding: 6px 12px;
+margin-top: 4px;
+font-size: 14px;
+background-color: #009688;
+color: #ffffff;
+width: 102px;
+
+}
+
+.edit-profile-btn:hover{
+color: #ffffff;
+}
+
+
+.edit-profile-body{
+	float: right;
+}
+
+
+/*--=============USER PROFILE AREA==============*/
+
+.edit-user-profile-area {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    height: auto;
+    margin-top: 0px;
+    margin-bottom: 12px;
+}
+
+/*--====== USER PROFILE HEADER AREA ======*/
+
+.edit-user-profile-header {
+	background-color: #F5F5F5;
+	height: 37px;
+	border-top-left-radius:5px;
+	border-top-right-radius: 5px;
+	font-size: 18px;
+	
+}
+
+
+.edit-user-profile-text{
+	font-size: 16px;
+	color:#31344F;
+	padding-top: 6px;
+}
+
+#profile-image2 {
+	cursor: pointer;
+     width: 100%;
+    height: 100%;
+	border:2px solid #03b1ce ;
+}
+
+
+.save-chg-btn{
+display: inline-block;
+padding: 6px 12px;
+margin-top: 4px;
+font-size: 14px;
+background-color: #009688;
+color: #ffffff;
+width: 53%;
+
+}
+
+.save-chg-btn:hover{
+color: #ffffff;
+}
+
+
+
+.cancle-btn{
+display: inline-block;
+padding: 6px 12px;
+margin-top: 4px;
+font-size: 14px;
+background-color: #009688;
+color: #ffffff;
+width: 45%;
+
+}
+
+.cancle-btn:hover{
+color: #ffffff;
+}
+
+
+
+
+
+
+/*--========== MESSAGING PAGE STYLE START============*/
+
+
+.messaging-area {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    height: auto;
+    margin-top: 0px;
+    margin-bottom: 12px;
+}
+
+
+.messaging-area-text{
+	font-size: 16px;
+	color:#31344F;
+	padding-top: 6px;
+}
+
+
+.messaging-area-text-header {
+	background-color: #F5F5F5;
+	height: 37px;
+	border-top-left-radius:3px;
+	border-top-right-radius: 3px;
+	font-size: 18px;
+	
+}
+
+/* Chat box style */
+
+.messaging-area .panel-body {
+  padding-right: 2px;
+}
+.chat-box {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.single-chat-box {
+	margin-right: 5px;
+}
+.single-chat-box > a {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  float: left;
+}
+.single-chat-box > a img {
+  width: 100%;
+}
+.single-chat-box .chat-spech {
+  margin-left: 80px;
+  background-color: #EBEDEF;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.single-chat-box.reply .chat-spech {
+  background-color: #009688;
+  color: #fff;
+  margin-left: 0px;
+  margin-right: 80px;
+}
+.single-chat-box.reply > a {
+  float: right;
+}
+
+
+
+.text-type-box {
+  position: relative;
+  padding-right: 20px;
+  padding-top: 5px;
+}
+.text-type-box button {
+  background-color: #fff;
+  border: 0px;
+  font-size: 18px;
+}
+.text-type-box textarea {
+  height: 60px;
+  resize: none;
+  border-radius: 60px;
+  padding: 15px 25px;
+  width: 100%;
+}
+.attatch-file {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  z-index: 1;
+}
+.file-upload {
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+}
+.attatch-file:after {
+  font-family: fontAwesome;
+  content: "\f0c6";
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  z-index: -1;
+  font-size: 20px;
+}
+.send-file {
+  position: absolute;
+  right: 40px;
+  top: 23px;
+}

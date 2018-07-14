@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
 			exit();
 		} else {
 			if($row = mysqli_fetch_assoc($result)) {
-				// De-hashing password
+				// Password Checking
 				$hashedPwdCheck = password_verify($pwd, $row['user_pwd']);
 
 				if($hashedPwdCheck == false) {

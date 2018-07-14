@@ -15,14 +15,24 @@
 
 	echo '<p>'.$original.'</p>';*/
 
-	$value = "difference between ac motor";
+/*	$value = "difference between ac motor";
 	$value = strtolower(trim($value));
 	$noSpace = preg_replace('/\s+/', ' ', $value);
 	$noCommon = removeCommonWords($noSpace);
 
 	print_r($noCommon);
 
-	$replace = str_replace(' ', '|', $noCommon);
+	$replace = str_replace(' ', '|', $noCommon);*/
 
+/*	$dateTime = "2018-07-10 22:26:12";
+	$format = date("d F Y", strtotime($dateTime));
+
+	echo $format;*/
+
+	$pass = "1234";
+	$hash = password_hash($pass, PASSWORD_DEFAULT);
+
+	if(mysqli_query($conn, "UPDATE users SET user_pwd = '$hash' WHERE user_id = '1'"))
+		echo "done";
 
 ?>

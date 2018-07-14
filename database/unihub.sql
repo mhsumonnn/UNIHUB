@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2018 at 06:40 PM
+-- Generation Time: Jul 14, 2018 at 08:02 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -53,7 +53,10 @@ INSERT INTO `answer` (`ans_id`, `qus_id`, `user_id`, `ans_detail`, `ans_time`, `
 (75, 22, 7, '<p>&nbsp;</p>\r\n<pre class=\"language-c\"><code>#include &lt;stdio.h&gt;\r\n#include &lt;stdlib.h&gt;\r\n#define SIZE 40\r\n\r\nstruct queue {\r\n    int items[SIZE];\r\n    int front;\r\n    int rear;\r\n};\r\n\r\nstruct queue* createQueue();\r\nvoid enqueue(struct queue* q, int);\r\nint dequeue(struct queue* q);\r\nvoid display(struct queue* q);\r\nint isEmpty(struct queue* q);\r\nvoid printQueue(struct queue* q);\r\n\r\nstruct node\r\n{\r\n    int vertex;\r\n    struct node* next;\r\n};\r\n\r\nstruct node* createNode(int);\r\n\r\nstruct Graph\r\n{\r\n    int numVertices;\r\n    struct node** adjLists;\r\n    int* visited;\r\n};\r\n\r\nstruct Graph* createGraph(int vertices);\r\nvoid addEdge(struct Graph* graph, int src, int dest);\r\nvoid printGraph(struct Graph* graph);\r\nvoid bfs(struct Graph* graph, int startVertex);\r\n\r\nint main()\r\n{\r\n    struct Graph* graph = createGraph(6);\r\n    addEdge(graph, 0, 1);\r\n    addEdge(graph, 0, 2);\r\n    addEdge(graph, 1, 2);\r\n    addEdge(graph, 1, 4);\r\n    addEdge(graph, 1, 3);\r\n    addEdge(graph, 2, 4);\r\n    addEdge(graph, 3, 4);\r\n \r\n    bfs(graph, 0);\r\n \r\n    return 0;\r\n}\r\n\r\nvoid bfs(struct Graph* graph, int startVertex) {\r\n\r\n    struct queue* q = createQueue();\r\n    \r\n    graph-&gt;visited[startVertex] = 1;\r\n    enqueue(q, startVertex);\r\n    \r\n    while(!isEmpty(q)){\r\n        printQueue(q);\r\n        int currentVertex = dequeue(q);\r\n        printf(\"Visited %d\n\", currentVertex);\r\n    \r\n       struct node* temp = graph-&gt;adjLists[currentVertex];\r\n    \r\n       while(temp) {\r\n            int adjVertex = temp-&gt;vertex;\r\n\r\n            if(graph-&gt;visited[adjVertex] == 0){\r\n                graph-&gt;visited[adjVertex] = 1;\r\n                enqueue(q, adjVertex);\r\n            }\r\n            temp = temp-&gt;next;\r\n       }\r\n    }\r\n}\r\n\r\n \r\nstruct node* createNode(int v)\r\n{\r\n    struct node* newNode = malloc(sizeof(struct node));\r\n    newNode-&gt;vertex = v;\r\n    newNode-&gt;next = NULL;\r\n    return newNode;\r\n}\r\n \r\n\r\nstruct Graph* createGraph(int vertices)\r\n{\r\n    struct Graph* graph = malloc(sizeof(struct Graph));\r\n    graph-&gt;numVertices = vertices;\r\n \r\n    graph-&gt;adjLists = malloc(vertices * sizeof(struct node*));\r\n    graph-&gt;visited = malloc(vertices * sizeof(int));\r\n    \r\n \r\n    int i;\r\n    for (i = 0; i &lt; vertices; i++) {\r\n        graph-&gt;adjLists[i] = NULL;\r\n        graph-&gt;visited[i] = 0;\r\n    }\r\n \r\n    return graph;\r\n}\r\n \r\nvoid addEdge(struct Graph* graph, int src, int dest)\r\n{\r\n    // Add edge from src to dest\r\n    struct node* newNode = createNode(dest);\r\n    newNode-&gt;next = graph-&gt;adjLists[src];\r\n    graph-&gt;adjLists[src] = newNode;\r\n \r\n    // Add edge from dest to src\r\n    newNode = createNode(src);\r\n    newNode-&gt;next = graph-&gt;adjLists[dest];\r\n    graph-&gt;adjLists[dest] = newNode;\r\n}\r\n\r\nstruct queue* createQueue() {\r\n    struct queue* q = malloc(sizeof(struct queue));\r\n    q-&gt;front = -1;\r\n    q-&gt;rear = -1;\r\n    return q;\r\n}\r\n\r\n\r\nint isEmpty(struct queue* q) {\r\n    if(q-&gt;rear == -1) \r\n        return 1;\r\n    else \r\n        return 0;\r\n}\r\n\r\nvoid enqueue(struct queue* q, int value){\r\n    if(q-&gt;rear == SIZE-1)\r\n        printf(\"\nQueue is Full!!\");\r\n    else {\r\n        if(q-&gt;front == -1)\r\n            q-&gt;front = 0;\r\n        q-&gt;rear++;\r\n        q-&gt;items[q-&gt;rear] = value;\r\n    }\r\n}\r\n\r\nint dequeue(struct queue* q){\r\n    int item;\r\n    if(isEmpty(q)){\r\n        printf(\"Queue is empty\");\r\n        item = -1;\r\n    }\r\n    else{\r\n        item = q-&gt;items[q-&gt;front];\r\n        q-&gt;front++;\r\n        if(q-&gt;front &gt; q-&gt;rear){\r\n            printf(\"Resetting queue\");\r\n            q-&gt;front = q-&gt;rear = -1;\r\n        }\r\n    }\r\n    return item;\r\n}\r\n\r\nvoid printQueue(struct queue *q) {\r\n    int i = q-&gt;front;\r\n\r\n    if(isEmpty(q)) {\r\n        printf(\"Queue is empty\");\r\n    } else {\r\n        printf(\"\nQueue contains \n\");\r\n        for(i = q-&gt;front; i &lt; q-&gt;rear + 1; i++) {\r\n                printf(\"%d \", q-&gt;items[i]);\r\n        }\r\n    }    \r\n}</code></pre>', '2018-07-07 16:31:01', 'torunkumar.jpg', 0),
 (76, 22, 7, '<p>&nbsp;<strong>Networking, also known as computer networking</strong>,</p>\r\n<p><span style=\"color: #ff6600;\">is the practice of transporting and exchanging data between nodes over a shared medium</span> <span style=\"background-color: #339966;\">in an information system. Networking comprises not only the design, construction and use of a network, but also the management, maintenance and operation of the network infrastructure, software and policies</span></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<ol>\r\n<li><span style=\"background-color: #ffffff;\">List list&nbsp;</span></li>\r\n<li><span style=\"background-color: #ffffff;\">list</span></li>\r\n</ol>', '2018-07-07 16:32:24', 'torunkumar.jpg', 0),
 (77, 22, 1, '<p>Reply</p>', '2018-07-08 12:22:33', 'sumon.jpg', 0),
-(78, 18, 1, '<p>reply</p>', '2018-07-08 12:23:00', 'sumon.jpg', 0);
+(78, 18, 1, '<p>reply</p>', '2018-07-08 12:23:00', 'sumon.jpg', 0),
+(79, 23, 8, '<p><strong>Heading 2</strong></p>\r\n<ul>\r\n<li><strong>List</strong></li>\r\n<li><strong>list</strong></li>\r\n</ul>\r\n<pre class=\"language-c\"><code>#include&lt;stdio.h&gt;\r\n\r\nint main(){\r\n\r\nreturn 0\r\n}</code></pre>', '2018-07-09 06:21:01', 'himelkhan.jpg', 0),
+(80, 24, 1, '<p><img src=\"assets/plugins/tinymce/plugins/emoticons/img/smiley-cool.gif\" alt=\"cool\" /></p>', '2018-07-11 16:26:44', 'sumon.jpg', 0),
+(81, 19, 1, '<p>Some text goes here</p>', '2018-07-12 07:07:30', 'sumon.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -120,10 +123,13 @@ INSERT INTO `question` (`qus_id`, `cat_id`, `user_id`, `question`, `post_time`, 
 (16, 4, 1, 'Lets create a question', '2018-07-06 10:04:14', 0, 1, 0),
 (17, 1, 1, 'Creating a awesome question here', '2018-07-06 12:17:24', 0, 0, 0),
 (18, 4, 5, 'Himel creating a quesion', '2018-07-06 13:03:19', 3, 3, 0),
-(19, 2, 1, 'question qusetion question qusetion question qusetion question qusetion question qusetion question qusetion question qusetion ', '2018-07-06 13:17:08', 0, 1, 0),
-(20, 1, 6, 'à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ (à¦¸à¦®à§à¦­à¦¾à¦¬à§à¦¯à¦¤à¦¾) à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ \r\n\r\nà¦¤à§‹ à¦•à§‡à¦‰à¦‡ à¦–à§à¦¬ à¦…à¦¬à¦¾à¦• à¦¹à¦²à§‹ à¦¨à¦¾ à¦¯à¦–à¦¨ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à', '2018-07-07 05:04:37', 0, 1, 0),
-(21, 1, 6, 'à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ (à¦¸à¦®à§à¦­à¦¾à¦¬à§à¦¯à¦¤à¦¾) à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ \r\n\r\nà¦¤à§‹ à¦•à§‡à¦‰à¦‡ à¦–à§à¦¬ à¦…à¦¬à¦¾à¦• à¦¹à¦²à§‹ à¦¨à¦¾ à¦¯à¦–à¦¨ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à¦²à§‡à¦•à§‡ à¦‡à¦‚à¦²à¦¿à¦¶ à¦®à¦¿à¦¡à¦¿à§Ÿà¦¾à¦® à¦¸à§à¦•à§à¦²à§‡ à¦­à¦°à§à¦¤à¦¿ à¦•à¦°à¦¾à¦¨à§‹à¦° à¦œà¦¨à§à¦¯ à¦ªà§à¦°à¦¿à¦ªà¦¾à¦°à§‡à¦¶à¦¨ à¦¨à§‡à§Ÿà¦¾ à¦¶à§à¦°à§ à¦•à¦°à¦²à§‹à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡, à¦­à¦°à§à¦¤à¦¿ à¦ªà¦°à§€à¦•à§à¦·à¦¾à§Ÿ à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾à¦° à¦›à§‡à¦²à§‡ à¦¶à¦¬à§à¦¦à¦—à§à¦²à§‹à¦° à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦œà¦¾à¦¨à§‡, à¦•à¦¿à¦¨à§à¦¤à§ à¦¸à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦œà¦¾à¦¨à§‡ à¦¨à¦¾à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦¨à¦¾ à¦®à¦¾à¦¨à¦²à§‡ à¦ à¦¿à¦• à¦¬à¦¾à¦•à§à¦¯ à¦—à¦ à¦¨ à¦¹à§Ÿ à¦¨à¦¾à¥¤ à¦¯à§‡à¦®à¦¨ à¦§à¦°à§‹, \'à¦¤à§à¦®à¦¿ à¦­à¦¾à¦¤ à¦–à¦¾à¦“\' à¦à¦Ÿà¦¾ à¦¤à§à¦®à¦¿ à¦¯à¦¦à¦¿ à¦‡à¦‚à¦°à§‡à¦œà¦¿à¦¤à§‡ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦•à¦°à§‡ à¦²à¦¿à¦–à§‹, \'rice eat you\' à¦¤à¦¾à¦¹à¦²à§‡ à¦•à§‡à¦‰ à¦­à¦¾à¦¬à¦¬à§‡ à¦¨à¦¾ à¦¤à§à¦®à¦¿ à¦•à¦¬à¦¿à¥¤ à¦¸à¦¬à¦¾à¦‡ à¦­à¦¾à¦¬à¦¬à§‡ à¦¤à§à¦®à¦¿ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦œà¦¾à¦¨à§‹ à¦¨à¦¾, à¦•à¦¿à¦‚à¦¬à¦¾ à¦­à¦¾à¦¬à¦¬à§‡ à¦¤à§à¦®à¦¿ à¦šà¦¾à¦šà§à¦›à§‹ à¦­à¦¾à¦¤ à¦¤à§‹à¦®à¦¾à¦•à§‡ à¦–à§‡à§Ÿà§‡ à¦«à§‡à¦²à§à¦•! \r\n\r\nà¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ à¦¤à§‹ à¦ªà§à¦°à¦¤à¦¿à¦Ÿà¦¾ à¦¬à¦¾à¦•à§à¦¯à§‡à¦° à¦œà¦¨à§à¦¯ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦œà¦¾à¦¨à¦¤à§‡ à¦šà¦¾à§Ÿ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à¦²à§‡à¦° à¦¸à¦ à¦¿à¦• à¦¹à¦¬à¦¾à¦° à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿ à¦•à¦¤à§‹à¥¤ ', '2018-07-07 05:06:37', 3, 18, 0),
-(22, 2, 7, 'Networking, also known as computer networking, is the practice of transporting and exchanging data between nodes over a shared medium in an information system. Networking comprises not only the design, construction and use of a network, but also the management, maintenance and operation of the network infrastructure, software and policies.', '2018-07-07 16:28:41', 3, 13, 0);
+(19, 2, 1, 'question qusetion question qusetion question qusetion question qusetion question qusetion question qusetion question qusetion ', '2018-07-06 13:17:08', 3, 3, 0),
+(20, 1, 6, 'à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ (à¦¸à¦®à§à¦­à¦¾à¦¬à§à¦¯à¦¤à¦¾) à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ \r\n\r\nà¦¤à§‹ à¦•à§‡à¦‰à¦‡ à¦–à§à¦¬ à¦…à¦¬à¦¾à¦• à¦¹à¦²à§‹ à¦¨à¦¾ à¦¯à¦–à¦¨ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à', '2018-07-07 05:04:37', 0, 3, 0),
+(21, 1, 6, 'à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ (à¦¸à¦®à§à¦­à¦¾à¦¬à§à¦¯à¦¤à¦¾) à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ \r\n\r\nà¦¤à§‹ à¦•à§‡à¦‰à¦‡ à¦–à§à¦¬ à¦…à¦¬à¦¾à¦• à¦¹à¦²à§‹ à¦¨à¦¾ à¦¯à¦–à¦¨ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à¦²à§‡à¦•à§‡ à¦‡à¦‚à¦²à¦¿à¦¶ à¦®à¦¿à¦¡à¦¿à§Ÿà¦¾à¦® à¦¸à§à¦•à§à¦²à§‡ à¦­à¦°à§à¦¤à¦¿ à¦•à¦°à¦¾à¦¨à§‹à¦° à¦œà¦¨à§à¦¯ à¦ªà§à¦°à¦¿à¦ªà¦¾à¦°à§‡à¦¶à¦¨ à¦¨à§‡à§Ÿà¦¾ à¦¶à§à¦°à§ à¦•à¦°à¦²à§‹à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡, à¦­à¦°à§à¦¤à¦¿ à¦ªà¦°à§€à¦•à§à¦·à¦¾à§Ÿ à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾à¦° à¦›à§‡à¦²à§‡ à¦¶à¦¬à§à¦¦à¦—à§à¦²à§‹à¦° à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦œà¦¾à¦¨à§‡, à¦•à¦¿à¦¨à§à¦¤à§ à¦¸à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦œà¦¾à¦¨à§‡ à¦¨à¦¾à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦¨à¦¾ à¦®à¦¾à¦¨à¦²à§‡ à¦ à¦¿à¦• à¦¬à¦¾à¦•à§à¦¯ à¦—à¦ à¦¨ à¦¹à§Ÿ à¦¨à¦¾à¥¤ à¦¯à§‡à¦®à¦¨ à¦§à¦°à§‹, \'à¦¤à§à¦®à¦¿ à¦­à¦¾à¦¤ à¦–à¦¾à¦“\' à¦à¦Ÿà¦¾ à¦¤à§à¦®à¦¿ à¦¯à¦¦à¦¿ à¦‡à¦‚à¦°à§‡à¦œà¦¿à¦¤à§‡ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦•à¦°à§‡ à¦²à¦¿à¦–à§‹, \'rice eat you\' à¦¤à¦¾à¦¹à¦²à§‡ à¦•à§‡à¦‰ à¦­à¦¾à¦¬à¦¬à§‡ à¦¨à¦¾ à¦¤à§à¦®à¦¿ à¦•à¦¬à¦¿à¥¤ à¦¸à¦¬à¦¾à¦‡ à¦­à¦¾à¦¬à¦¬à§‡ à¦¤à§à¦®à¦¿ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦œà¦¾à¦¨à§‹ à¦¨à¦¾, à¦•à¦¿à¦‚à¦¬à¦¾ à¦­à¦¾à¦¬à¦¬à§‡ à¦¤à§à¦®à¦¿ à¦šà¦¾à¦šà§à¦›à§‹ à¦­à¦¾à¦¤ à¦¤à§‹à¦®à¦¾à¦•à§‡ à¦–à§‡à§Ÿà§‡ à¦«à§‡à¦²à§à¦•! \r\n\r\nà¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ à¦¤à§‹ à¦ªà§à¦°à¦¤à¦¿à¦Ÿà¦¾ à¦¬à¦¾à¦•à§à¦¯à§‡à¦° à¦œà¦¨à§à¦¯ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦œà¦¾à¦¨à¦¤à§‡ à¦šà¦¾à§Ÿ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à¦²à§‡à¦° à¦¸à¦ à¦¿à¦• à¦¹à¦¬à¦¾à¦° à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿ à¦•à¦¤à§‹à¥¤ ', '2018-07-07 05:06:37', 3, 19, 0),
+(22, 2, 7, 'Networking, also known as computer networking, is the practice of transporting and exchanging data between nodes over a shared medium in an information system. Networking comprises not only the design, construction and use of a network, but also the management, maintenance and operation of the network infrastructure, software and policies.', '2018-07-07 16:28:41', 3, 19, 0),
+(23, 3, 8, 'What is the difference between ac motor and dc motor?', '2018-07-09 06:19:59', 1, 14, 0),
+(24, 3, 1, 'create question', '2018-07-10 18:41:56', 1, 6, 0),
+(25, 4, 1, 'Afsana Islam Dina creating a question to know how does the create question works.', '2018-07-12 07:42:27', 0, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -139,6 +145,7 @@ CREATE TABLE `users` (
   `user_email` varchar(255) NOT NULL,
   `user_pwd` varchar(255) NOT NULL,
   `user_active` int(2) NOT NULL,
+  `user_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -146,14 +153,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_first`, `user_last`, `user_name`, `user_email`, `user_pwd`, `user_active`, `image`) VALUES
-(1, 'Hasan', 'Sumon', 'sumon', 'email@gmail.com', '$2y$10$YDMZgMe1XrhaNg93toftwOBVFMOkv06/KF4GbIXfYKl7hqW9s38cu', 0, 'sumon.jpg'),
-(2, 'First', 'Last', 'firstlast', 'firstlast@email.com', '$2y$10$z8/DAraCMeoVMWPhBfSD7OfFREnd8kZMRKyKyjWIKdX96IeSN2aGG', 0, 'firstlast.jpg'),
-(3, 'Some', 'Name', 'somename', 'somename@gmail.com', '$2y$10$6fmTBX/LgVrhGXG7KmeLwOiP11nMxjIqZTFlBwPyWzx3YRhihEcxW', 0, 'somename.jpg'),
-(4, 'Md', 'Rezuan', 'rezuan', 'rezuan@email.com', '$2y$10$chIbDvjzCVlsGnLDh4JkMO8Yo7OXzSaoid2FEJzZZe07V1m2dIvwq', 0, 'rezuan.jpg'),
-(5, 'md', 'nam', 'nam', 'nam@email.com', '$2y$10$fEBFnDxJzoZ4IMZQR81CL.oSAmopxaZ0zz5LI.LRDW5PYS.WgVu26', 0, 'nam.jpg'),
-(6, 'Kuddos', 'Bayati', 'kuddosbayati', 'kuddus@email.com', '$2y$10$RIG4HGfzPv6Xo4pZkk6Jb.voID4HlIGepGhf3YVgyd3VF4jTL83Ua', 0, 'kuddosbayati.jpg'),
-(7, 'Torun', 'Kumar', 'torunkumar', 'torunkumar@email.com', '$2y$10$vh1LYzEUAcmgiIa0Q8M4AeQih.utdVVXYYX3jvNxKVfbgb2bRMV52', 0, 'torunkumar.jpg');
+INSERT INTO `users` (`user_id`, `user_first`, `user_last`, `user_name`, `user_email`, `user_pwd`, `user_active`, `user_created`, `image`) VALUES
+(1, 'Mahmudul Hasan', 'Sumon', 'sumon', 'asas@gmail.com', '$2y$10$bHP7DZ7t8uBEXLOZhkLkyOBmc1hToF7hDAvKb5u9CZqJCR01ktwN2', 0, '2018-07-10 16:26:12', 'sumon.jpg'),
+(2, 'First', 'Last', 'firstlast', 'firstlast@email.com', '$2y$10$yYmukCHC1mDIhdJrcuZ.yeUKu0Wl23PkD1/WeBe7520Yv024Qu17a', 0, '2018-07-10 16:26:12', 'firstlast.jpg'),
+(3, 'Some', 'Name', 'somename', 'somename@gmail.com', '$2y$10$6fmTBX/LgVrhGXG7KmeLwOiP11nMxjIqZTFlBwPyWzx3YRhihEcxW', 0, '2018-07-10 16:26:12', 'somename.jpg'),
+(4, 'Md', 'Rezuan', 'rezuan', 'rezuan@email.com', '$2y$10$chIbDvjzCVlsGnLDh4JkMO8Yo7OXzSaoid2FEJzZZe07V1m2dIvwq', 0, '2018-07-10 16:26:12', 'rezuan.jpg'),
+(5, 'md', 'nam', 'nam', 'nam@email.com', '$2y$10$fEBFnDxJzoZ4IMZQR81CL.oSAmopxaZ0zz5LI.LRDW5PYS.WgVu26', 0, '2018-07-10 16:26:12', 'nam.jpg'),
+(6, 'Kuddos', 'Bayati', 'kuddosbayati', 'kuddus@email.com', '$2y$10$RIG4HGfzPv6Xo4pZkk6Jb.voID4HlIGepGhf3YVgyd3VF4jTL83Ua', 0, '2018-07-10 16:26:12', 'kuddosbayati.jpg'),
+(7, 'Torun', 'Kumar', 'torunkumar', 'torunkumar@email.com', '$2y$10$vh1LYzEUAcmgiIa0Q8M4AeQih.utdVVXYYX3jvNxKVfbgb2bRMV52', 0, '2018-07-10 16:26:12', 'torunkumar.jpg'),
+(8, 'Himel', 'Khan', 'himelkhan', 'himel@email.com', '$2y$10$WTLC8i31N/hmtzPsNn61geSl4VRlSUxlUVgxsS1aOKkzgGrCyWkMW', 0, '2018-07-10 16:26:12', 'himelkhan.jpg');
 
 --
 -- Indexes for dumped tables
@@ -191,7 +199,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `ans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `ans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -203,13 +211,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `qus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `qus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

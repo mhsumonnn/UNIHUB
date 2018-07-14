@@ -21,5 +21,20 @@
         <!--=== All Active ===-->
         <script type="text/javascript" src="assets/js/main.js"></script>
 
+
+
+        <script>
+            $(function() {
+                $('#profile-image2').on('click', function() {
+                    $('#profile-image-upload').click();
+                });
+            });
+
+            function submit (){
+               document.getElementById("textForm").submit();
+               document.getElementById("imageForm").submit();
+            }
+        </script>
+
     </body>
 </html>
