@@ -59,6 +59,6 @@
 		
         </div> <!--====== row div END ======-->
     </div> <!--CONTAINER DIV END-->
-</section><!--====== MAIN SECTION AREA END ======-->
+</section> <!--====== MAIN SECTION AREA END ======-->
 
 <?php include 'footer.php'?>

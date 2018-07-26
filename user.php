@@ -29,7 +29,7 @@
 			$userEdit = 'user-edit.php?userId='.$userId;
 			$userFullName = $userFirst.' '.$userLast;
 
-			$userQus = mysqli_query($conn, "SELECT qus_id FROM question WHERE user_id = '$userId'");
+			$userQus = mysqli_query($conn, "SELECT qus_id FROM question WHERE user_id = '$userId' ORDER BY qus_id DESC");
 
 		}
 
@@ -47,6 +47,9 @@
                     <div class="user-profile-area">
                         <div class="user-profile-header text-center">
                             <p class="user-profile-text">User Profile</p>
+
+
+                    
                         </div>
                         <div class="panel-body">
                             <div class="box box-info">
@@ -56,7 +59,7 @@
                                             <img alt="User Pic" src="<?php echo $userImage?>" id="profile-image1" class="img-thumbnail img-responsive"> 
                                             <?php if (isset($_SESSION['uid']) && !($userId == $_SESSION['uid'])):?>
                                                 <div class="send-msg-body">
-                                                    <a class="btn msg-btn" href="">Message</a>
+                                                    <a class="btn msg-btn" href="<?php echo 'message.php?userId='.$userId;?>">Message</a>
                                                 </div>
                                             <?php endif;?>
                                         </div>
@@ -66,24 +69,24 @@
                                         <table class="table table-user-information">
                                             <tbody>
                                                 <tr>
-                                                    <td>First Name:</td>
-                                                    <td><?php echo $userFirst?></td>
+                                                    <td>First Name :</td>
+                                                    <td><strong><?php echo $userFirst?></strong></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Last Name:</td>
-                                                    <td><?php echo $userLast?></td>
+                                                    <td>Last Name :</td>
+                                                    <td><strong><?php echo $userLast?></strong></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>User Name</td>
-                                                    <td><?php echo $userName?></td>
+                                                    <td>User Name :</td>
+                                                    <td><strong><?php echo $userName?></strong></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Date Of Joining:</td>
-                                                    <td><?php echo $userJoined?></td>
+                                                    <td>Date Of Joining :</td>
+                                                    <td><strong><?php echo $userJoined?></strong></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Email</td>
-                                                    <td><?php echo $userEmail?></td>
+                                                    <td>Email :</td>
+                                                    <td><strong><?php echo $userEmail?></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -92,6 +95,7 @@
                                         	if(isset($_SESSION['uid']) && ($userId==$_SESSION['uid']))
                                         		echo '<div class="edit-profile-body">
 			                                            <a href="'.$userEdit.'" class="btn edit-profile-btn">Edit Profile</a>
+                                                        <a href="includes/logout.inc.php" class="btn edit-profile-btn">Logout</a>
 			                                        </div>'; 
                                         ?>
 
@@ -112,7 +116,19 @@
 							<li class="nav-item"><a class="nav-link active"><?php echo $userFullName?> Posted This Questions</a></li>
 						</ul>
 					</div>
+                    
+                    <?php
+                        if(isset($_GET['del'])){
+                            
+                            $error = $_GET['del'];
 
+                            if($error == 'success'){
+                                echo '<div class="alert alert-danger text-center">
+                                  <strong>Your question has been removed from Database</strong>
+                                </div>';
+                            }
+                        }
+                    ?>
 			
 					<div class="tab-content">
 						

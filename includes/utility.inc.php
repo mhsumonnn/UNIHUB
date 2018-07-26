@@ -80,6 +80,7 @@
 		echo '</ul>';
 	}
 
+
 /*	<ul class="list-group"><!--====== CATEGORIES LIST ======-->
         <a href="#"><li class="list-group-item">Programming<span class="badge">10</span></li></a>
         <a href="#"><li class="list-group-item">Networking<span class="badge">30</span></li></a>   
@@ -87,9 +88,36 @@
         <a href="#"><li class="list-group-item">Database<span class="badge">14</span></li></a>
 		<a href="#"><li class="list-group-item">Operating System<span class="badge">6</span></li></a>
         <a href="#"><li class="list-group-item">MATLAB<span class="badge">26</span></li></a>
-		<a href="#"><li class="list-group-item">Computer Graphics<span class="badge">12</span></li></a>
-		<a href="#"><li class="list-group-item">Image Processing<span class="badge">4</span></li></a>
 	</ul>*/
+
+
+	function onlineList($userID){
+		include 'dbh.inc.php';
+
+		echo '<div class="categories-area">
+                <div class="categories-header">
+                    <p>Active Users</p>
+                </div>
+                <ul class="list-group">';
+
+		$userInfo = mysqli_query($conn, "SELECT * FROM users WHERE user_id != '$userID' AND user_active='1' ORDER BY user_first");
+
+		while($userRow = mysqli_fetch_assoc($userInfo)){
+
+			$userId = $userRow['user_id'];
+			$userFirst = $userRow['user_first'];
+			$userLast = $userRow['user_last'];
+			$userName = $userFirst .' '. $userLast;
+
+			$url = 'message.php?userId='.$userId;
+
+			echo '<a href="'.$url.'"><li class="list-group-item">'.$userName.'<span class="chatcircle" style="float: right; width: 9px; height: 9px; background-color: #ADFF2F; border-radius: 50%; margin-top: 6px;"></span></li></a>';
+		}
+
+		echo '</ul> </div>';
+	}
+
+
 
 
 	function replyList($qusId){
@@ -116,6 +144,39 @@
 						<div class="media-body">
 							<h4 class="media-heading">'.$nameLink.' replied: </h4>
 							<div class="qn-area">'.$row['ans_detail'].'</div>
+						</div>
+					</div>';
+
+			}
+		}
+
+	}
+
+
+	function reviewReplyList($revId){
+		include 'dbh.inc.php';
+
+		$result = mysqli_query($conn, "SELECT * FROM reviewreply WHERE review_id='$revId'");
+
+		if(mysqli_num_rows($result) > 0){
+			while($row = mysqli_fetch_assoc($result)){
+				$image = 'uploads/profile-pic/'.$row['image'];
+				$userid = $row['user_id'];
+
+				$user = mysqli_query($conn, "SELECT user_first, user_last FROM users WHERE user_id='$userid'");
+				$res = mysqli_fetch_assoc($user);
+				$name = $res['user_first'] .' '. $res['user_last'];
+				$nameLink = '<a href="user.php?userId='.$userid.'">'.$name.'</a>'; 
+
+				echo '<hr class="content-line">
+					<div class="media">
+						<div class="media-left">
+							<img src="'.$image.'" class="media-object" style="width:50px">
+						</div>
+
+						<div class="media-body">
+							<h4 class="media-heading">'.$nameLink.' replied: </h4>
+							<div class="qn-area">'.$row['reply_detail'].'</div>
 						</div>
 					</div>';
 
@@ -437,7 +498,15 @@
 					<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
 						<p class="qn-area"><span class="question">
 						<a href="'.$url.'">Question: </span>'.$question.'</p></a>
-						<p class="ans-time text-right">'.$qusInfo.' </p>
+						';
+
+						if($_SESSION['uid'] == $userId)
+							echo'
+								<a href="edit-question.php?qusId='.$qusId.'" class="btn edit-profile-btn" style="float: right;" title="Edit This Question"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="delete-question.php?qusId='.$qusId.'" class="btn edit-profile-btn" style="float: right; margin-right: 5px" title="Delete This Question"><i class="fa fa-trash-o" aria-hidden="true"></i></i></a>';
+						
+						echo '
+							<a class="ans-time" style="float: right; padding: 12px 10px 0px 0px; text-decoration: none; font-size: 13px;">'.$qusInfo.' </a>
 				</div>
 					<hr class="content-line">
 			</div>';			
@@ -494,6 +563,63 @@
 			</div>';			
 	
 	}
+
+
+	function allReviews(){
+		include 'dbh.inc.php';
+
+		$result = mysqli_query($conn, "SELECT * FROM review ORDER BY rev_id DESC");
+
+		while($row = mysqli_fetch_assoc($result)){
+			$revId = $row['rev_id'];
+			$userId = $row['user_id'];
+			$title = $row['title'];
+			$post = $row['post'];
+			$postTime = $row['posttime'];
+			$answered = $row['answered'];
+			$view = $row['view'];
+
+			$userInfo = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id='$userId'");
+			$array = mysqli_fetch_assoc($userInfo);
+			$userName = $array['user_first'] .' '. $array['user_last'];
+			$nameLink = '<a href="user.php?userId='.$userId.'">'.$userName.'</a>'; 
+			$image = 'uploads/profile-pic/'.$array['image'];
+			$posted = postTime($postTime);
+
+			$qusInfo = 'Answered '.$answered.' / Viewed '.$view;
+			$url = 'review-post.php?revId='.$revId;
+
+			echo '<div class="media">
+					<div class="media-left">
+						<img src="'.$image.'" class="media-object" style="width:60px">
+					</div>
+						   
+					<div class="media-body">
+						<h4 class="media-heading">'.$nameLink.' asked '.$posted.'</h4>
+							<p class="qn-area"><span class="question">
+							<a href="'.$url.'">Question: </span>'.$title.'</p></a>
+							<p class="ans-time text-right">'.$qusInfo.' </p>
+					</div>
+						<hr class="content-line">
+				</div>';			
+
+		}
+	}
+
+/*	<div class="media">
+	     <div class="media-left">
+	        <img src="assets/images/avatar_2.png" class="media-object" style="width:60px">
+	     </div>
+	     <div class="media-body"><!--==== MEDIA BODY START ====-->
+	        <h4 class="media-heading">John Doe asked 1 Hour 20 Minute before</h4>
+	        <p class="qn-area">
+	           <a href="doc-review-specific-doc.html">What is document review? How is it done? What is the process of legal document review?
+	        </p>
+	        </a>
+	        <p class="ans-time text-right">Answered 02 / Voted 01 / Viewed 16 </p>
+	     </div>
+	     <hr class="content-line">
+	  </div>*/
 
 
 

@@ -1,144 +1,160 @@
--- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jul 14, 2018 at 08:02 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.33
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
+/*!40101 SET NAMES utf8 */;
 --
 -- Database: `unihub`
 --
 
--- --------------------------------------------------------
 
---
--- Table structure for table `answer`
---
+
 
 CREATE TABLE `answer` (
-  `ans_id` int(11) NOT NULL,
+  `ans_id` int(11) NOT NULL AUTO_INCREMENT,
   `qus_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `ans_detail` text NOT NULL,
   `ans_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `image` varchar(255) NOT NULL,
-  `likes` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `likes` int(11) NOT NULL,
+  PRIMARY KEY (`ans_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `answer`
---
 
-INSERT INTO `answer` (`ans_id`, `qus_id`, `user_id`, `ans_detail`, `ans_time`, `image`, `likes`) VALUES
-(45, 17, 1, '<pre class=\"language-c\"><code>#include&lt;stdio.h&gt;\r\n#include&lt;conio.h&gt;\r\nint a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;\r\nvoid bfs(int v) {\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(a[v][i] &amp;&amp; !visited[i])\r\n	   q[++r]=i;\r\n	if(f&lt;=r) {\r\n		visited[q[f]]=1;\r\n		bfs(q[f++]);\r\n	}\r\n}\r\nvoid main() {\r\n	int v;\r\n	clrscr();\r\n	printf(\"\n Enter the number of vertices:\");\r\n	scanf(\"%d\",&amp;n);\r\n	for (i=1;i&lt;=n;i++) {\r\n		q[i]=0;\r\n		visited[i]=0;\r\n	}\r\n	printf(\"\n Enter graph data in matrix form:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  for (j=1;j&lt;=n;j++)\r\n	   scanf(\"%d\",&amp;a[i][j]);\r\n	printf(\"\n Enter the starting vertex:\");\r\n	scanf(\"%d\",&amp;v);\r\n	bfs(v);\r\n	printf(\"\n The node which are reachable are:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(visited[i])\r\n	   printf(\"%d	\",i); else\r\n	   printf(\"\n Bfs is not possible\");\r\n	getch();\r\n}</code></pre>', '2018-07-06 12:51:04', 'sumon.jpg', 0),
-(46, 18, 5, '<pre class=\"language-c\"><code>#include&lt;stdio.h&gt;\r\n#include&lt;conio.h&gt;\r\nint a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;\r\nvoid bfs(int v) {\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(a[v][i] &amp;&amp; !visited[i])\r\n	   q[++r]=i;\r\n	if(f&lt;=r) {\r\n		visited[q[f]]=1;\r\n		bfs(q[f++]);\r\n	}\r\n}\r\nvoid main() {\r\n	int v;\r\n	clrscr();\r\n	printf(\"\n Enter the number of vertices:\");\r\n	scanf(\"%d\",&amp;n);\r\n	for (i=1;i&lt;=n;i++) {\r\n		q[i]=0;\r\n		visited[i]=0;\r\n	}\r\n	printf(\"\n Enter graph data in matrix form:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  for (j=1;j&lt;=n;j++)\r\n	   scanf(\"%d\",&amp;a[i][j]);\r\n	printf(\"\n Enter the starting vertex:\");\r\n	scanf(\"%d\",&amp;v);\r\n	bfs(v);\r\n	printf(\"\n The node which are reachable are:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(visited[i])\r\n	   printf(\"%d	\",i); else\r\n	   printf(\"\n Bfs is not possible\");\r\n	getch();\r\n}</code></pre>', '2018-07-06 13:03:44', 'nam.jpg', 0),
-(47, 18, 5, '<p><strong>Text format<img src=\"assets/plugins/tinymce/plugins/emoticons/img/smiley-money-mouth.gif\" alt=\"money-mouth\" /></strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<ul>\r\n<li><span style=\"background-color: #ff6600;\">Lorem ipsum</span></li>\r\n<li><span style=\"background-color: #ff6600;\">Image processing</span></li>\r\n</ul>', '2018-07-06 13:05:39', 'nam.jpg', 0),
-(48, 19, 1, '<pre class=\"language-c\"><code>#include&lt;stdio.h&gt;\r\n#include&lt;conio.h&gt;\r\nint a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;\r\nvoid bfs(int v) {\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(a[v][i] &amp;&amp; !visited[i])\r\n	   q[++r]=i;\r\n	if(f&lt;=r) {\r\n		visited[q[f]]=1;\r\n		bfs(q[f++]);\r\n	}\r\n}\r\nvoid main() {\r\n	int v;\r\n	clrscr();\r\n	printf(\"\n Enter the number of vertices:\");\r\n	scanf(\"%d\",&amp;n);\r\n	for (i=1;i&lt;=n;i++) {\r\n		q[i]=0;\r\n		visited[i]=0;\r\n	}\r\n	printf(\"\n Enter graph data in matrix form:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  for (j=1;j&lt;=n;j++)\r\n	   scanf(\"%d\",&amp;a[i][j]);\r\n	printf(\"\n Enter the starting vertex:\");\r\n	scanf(\"%d\",&amp;v);\r\n	bfs(v);\r\n	printf(\"\n The node which are reachable are:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(visited[i])\r\n	   printf(\"%d	\",i); else\r\n	   printf(\"\n Bfs is not possible\");\r\n	getch();\r\n}</code></pre>', '2018-07-06 13:20:47', 'sumon.jpg', 0),
-(49, 19, 1, '<pre class=\"language-c\"><code>#include&lt;stdio.h&gt;\r\n#include&lt;conio.h&gt;\r\nint a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;\r\nvoid bfs(int v) {\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(a[v][i] &amp;&amp; !visited[i])\r\n	   q[++r]=i;\r\n	if(f&lt;=r) {\r\n		visited[q[f]]=1;\r\n		bfs(q[f++]);\r\n	}\r\n}\r\nvoid main() {\r\n	int v;\r\n	clrscr();\r\n	printf(\"\n Enter the number of vertices:\");\r\n	scanf(\"%d\",&amp;n);\r\n	for (i=1;i&lt;=n;i++) {\r\n		q[i]=0;\r\n		visited[i]=0;\r\n	}\r\n	printf(\"\n Enter graph data in matrix form:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  for (j=1;j&lt;=n;j++)\r\n	   scanf(\"%d\",&amp;a[i][j]);\r\n	printf(\"\n Enter the starting vertex:\");\r\n	scanf(\"%d\",&amp;v);\r\n	bfs(v);\r\n	printf(\"\n The node which are reachable are:\n\");\r\n	for (i=1;i&lt;=n;i++)\r\n	  if(visited[i])\r\n	   printf(\"%d	\",i); else\r\n	   printf(\"\n Bfs is not possible\");\r\n	getch();\r\n}</code></pre>', '2018-07-06 13:21:02', 'sumon.jpg', 0),
-(50, 21, 1, '<p><span style=\"color: #ff6600;\"><strong>à¦¬à§à¦¯à¦¾à¦–à§à¦¯à¦¾ -&nbsp;</strong></span></p>\r\n<p>à¦›à§Ÿà¦Ÿà¦¾ à¦†à¦²à¦¾à¦¦à¦¾ à¦­à¦¾à¦¬à§‡ eat you rice à¦•à§‡ à¦¸à¦¾à¦œà¦¾à¦¨à§‹ à¦¯à¦¾à§Ÿ</p>\r\n<ol>\r\n<li>eat you rice</li>\r\n<li>eat rice you</li>\r\n<li>you eat rice</li>\r\n<li>you rice eat</li>\r\n<li>rice you eat</li>\r\n<li>rice eat you</li>\r\n</ol>\r\n<p>à¦à¦° à¦®à¦§à§à¦¯à§‡ à¦®à¦¾à¦¤à§à¦° à¦à¦•à¦Ÿà¦¾ à¦ à¦¿à¦• - you eat rice&nbsp;</p>', '2018-07-07 05:13:22', 'sumon.jpg', 0),
-(74, 21, 1, '<p>à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ (à¦¸à¦®à§à¦­à¦¾à¦¬à§à¦¯à¦¤à¦¾) à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ à¦¤à§‹ à¦•à§‡à¦‰à¦‡ à¦–à§à¦¬ à¦…à¦¬à¦¾à¦• à¦¹à¦²à§‹ à¦¨à¦¾ à¦¯à¦–à¦¨ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à¦²à§‡à¦•à§‡ à¦‡à¦‚à¦²à¦¿à¦¶ à¦®à¦¿à¦¡à¦¿à§Ÿà¦¾à¦® à¦¸à§à¦•à§à¦²à§‡ à¦­à¦°à§à¦¤à¦¿ à¦•à¦°à¦¾à¦¨à§‹à¦° à¦œà¦¨à§à¦¯ à¦ªà§à¦°à¦¿à¦ªà¦¾à¦°à§‡à¦¶à¦¨ à¦¨à§‡à§Ÿà¦¾ à¦¶à§à¦°à§ à¦•à¦°à¦²à§‹à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡, à¦­à¦°à§à¦¤à¦¿ à¦ªà¦°à§€à¦•à§à¦·à¦¾à§Ÿ à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾à¦° à¦›à§‡à¦²à§‡ à¦¶à¦¬à§à¦¦à¦—à§à¦²à§‹à¦° à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦œà¦¾à¦¨à§‡, à¦•à¦¿à¦¨à§à¦¤à§ à¦¸à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦œà¦¾à¦¨à§‡ à¦¨à¦¾à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦¨à¦¾ à¦®à¦¾à¦¨à¦²à§‡ à¦ à¦¿à¦• à¦¬à¦¾à¦•à§à¦¯ à¦—à¦ à¦¨ à¦¹à§Ÿ à¦¨à¦¾à¥¤</p>', '2018-07-07 07:03:59', 'sumon.jpg', 0),
-(75, 22, 7, '<p>&nbsp;</p>\r\n<pre class=\"language-c\"><code>#include &lt;stdio.h&gt;\r\n#include &lt;stdlib.h&gt;\r\n#define SIZE 40\r\n\r\nstruct queue {\r\n    int items[SIZE];\r\n    int front;\r\n    int rear;\r\n};\r\n\r\nstruct queue* createQueue();\r\nvoid enqueue(struct queue* q, int);\r\nint dequeue(struct queue* q);\r\nvoid display(struct queue* q);\r\nint isEmpty(struct queue* q);\r\nvoid printQueue(struct queue* q);\r\n\r\nstruct node\r\n{\r\n    int vertex;\r\n    struct node* next;\r\n};\r\n\r\nstruct node* createNode(int);\r\n\r\nstruct Graph\r\n{\r\n    int numVertices;\r\n    struct node** adjLists;\r\n    int* visited;\r\n};\r\n\r\nstruct Graph* createGraph(int vertices);\r\nvoid addEdge(struct Graph* graph, int src, int dest);\r\nvoid printGraph(struct Graph* graph);\r\nvoid bfs(struct Graph* graph, int startVertex);\r\n\r\nint main()\r\n{\r\n    struct Graph* graph = createGraph(6);\r\n    addEdge(graph, 0, 1);\r\n    addEdge(graph, 0, 2);\r\n    addEdge(graph, 1, 2);\r\n    addEdge(graph, 1, 4);\r\n    addEdge(graph, 1, 3);\r\n    addEdge(graph, 2, 4);\r\n    addEdge(graph, 3, 4);\r\n \r\n    bfs(graph, 0);\r\n \r\n    return 0;\r\n}\r\n\r\nvoid bfs(struct Graph* graph, int startVertex) {\r\n\r\n    struct queue* q = createQueue();\r\n    \r\n    graph-&gt;visited[startVertex] = 1;\r\n    enqueue(q, startVertex);\r\n    \r\n    while(!isEmpty(q)){\r\n        printQueue(q);\r\n        int currentVertex = dequeue(q);\r\n        printf(\"Visited %d\n\", currentVertex);\r\n    \r\n       struct node* temp = graph-&gt;adjLists[currentVertex];\r\n    \r\n       while(temp) {\r\n            int adjVertex = temp-&gt;vertex;\r\n\r\n            if(graph-&gt;visited[adjVertex] == 0){\r\n                graph-&gt;visited[adjVertex] = 1;\r\n                enqueue(q, adjVertex);\r\n            }\r\n            temp = temp-&gt;next;\r\n       }\r\n    }\r\n}\r\n\r\n \r\nstruct node* createNode(int v)\r\n{\r\n    struct node* newNode = malloc(sizeof(struct node));\r\n    newNode-&gt;vertex = v;\r\n    newNode-&gt;next = NULL;\r\n    return newNode;\r\n}\r\n \r\n\r\nstruct Graph* createGraph(int vertices)\r\n{\r\n    struct Graph* graph = malloc(sizeof(struct Graph));\r\n    graph-&gt;numVertices = vertices;\r\n \r\n    graph-&gt;adjLists = malloc(vertices * sizeof(struct node*));\r\n    graph-&gt;visited = malloc(vertices * sizeof(int));\r\n    \r\n \r\n    int i;\r\n    for (i = 0; i &lt; vertices; i++) {\r\n        graph-&gt;adjLists[i] = NULL;\r\n        graph-&gt;visited[i] = 0;\r\n    }\r\n \r\n    return graph;\r\n}\r\n \r\nvoid addEdge(struct Graph* graph, int src, int dest)\r\n{\r\n    // Add edge from src to dest\r\n    struct node* newNode = createNode(dest);\r\n    newNode-&gt;next = graph-&gt;adjLists[src];\r\n    graph-&gt;adjLists[src] = newNode;\r\n \r\n    // Add edge from dest to src\r\n    newNode = createNode(src);\r\n    newNode-&gt;next = graph-&gt;adjLists[dest];\r\n    graph-&gt;adjLists[dest] = newNode;\r\n}\r\n\r\nstruct queue* createQueue() {\r\n    struct queue* q = malloc(sizeof(struct queue));\r\n    q-&gt;front = -1;\r\n    q-&gt;rear = -1;\r\n    return q;\r\n}\r\n\r\n\r\nint isEmpty(struct queue* q) {\r\n    if(q-&gt;rear == -1) \r\n        return 1;\r\n    else \r\n        return 0;\r\n}\r\n\r\nvoid enqueue(struct queue* q, int value){\r\n    if(q-&gt;rear == SIZE-1)\r\n        printf(\"\nQueue is Full!!\");\r\n    else {\r\n        if(q-&gt;front == -1)\r\n            q-&gt;front = 0;\r\n        q-&gt;rear++;\r\n        q-&gt;items[q-&gt;rear] = value;\r\n    }\r\n}\r\n\r\nint dequeue(struct queue* q){\r\n    int item;\r\n    if(isEmpty(q)){\r\n        printf(\"Queue is empty\");\r\n        item = -1;\r\n    }\r\n    else{\r\n        item = q-&gt;items[q-&gt;front];\r\n        q-&gt;front++;\r\n        if(q-&gt;front &gt; q-&gt;rear){\r\n            printf(\"Resetting queue\");\r\n            q-&gt;front = q-&gt;rear = -1;\r\n        }\r\n    }\r\n    return item;\r\n}\r\n\r\nvoid printQueue(struct queue *q) {\r\n    int i = q-&gt;front;\r\n\r\n    if(isEmpty(q)) {\r\n        printf(\"Queue is empty\");\r\n    } else {\r\n        printf(\"\nQueue contains \n\");\r\n        for(i = q-&gt;front; i &lt; q-&gt;rear + 1; i++) {\r\n                printf(\"%d \", q-&gt;items[i]);\r\n        }\r\n    }    \r\n}</code></pre>', '2018-07-07 16:31:01', 'torunkumar.jpg', 0),
-(76, 22, 7, '<p>&nbsp;<strong>Networking, also known as computer networking</strong>,</p>\r\n<p><span style=\"color: #ff6600;\">is the practice of transporting and exchanging data between nodes over a shared medium</span> <span style=\"background-color: #339966;\">in an information system. Networking comprises not only the design, construction and use of a network, but also the management, maintenance and operation of the network infrastructure, software and policies</span></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<ol>\r\n<li><span style=\"background-color: #ffffff;\">List list&nbsp;</span></li>\r\n<li><span style=\"background-color: #ffffff;\">list</span></li>\r\n</ol>', '2018-07-07 16:32:24', 'torunkumar.jpg', 0),
-(77, 22, 1, '<p>Reply</p>', '2018-07-08 12:22:33', 'sumon.jpg', 0),
-(78, 18, 1, '<p>reply</p>', '2018-07-08 12:23:00', 'sumon.jpg', 0),
-(79, 23, 8, '<p><strong>Heading 2</strong></p>\r\n<ul>\r\n<li><strong>List</strong></li>\r\n<li><strong>list</strong></li>\r\n</ul>\r\n<pre class=\"language-c\"><code>#include&lt;stdio.h&gt;\r\n\r\nint main(){\r\n\r\nreturn 0\r\n}</code></pre>', '2018-07-09 06:21:01', 'himelkhan.jpg', 0),
-(80, 24, 1, '<p><img src=\"assets/plugins/tinymce/plugins/emoticons/img/smiley-cool.gif\" alt=\"cool\" /></p>', '2018-07-11 16:26:44', 'sumon.jpg', 0),
-(81, 19, 1, '<p>Some text goes here</p>', '2018-07-12 07:07:30', 'sumon.jpg', 0);
+INSERT INTO answer VALUES
+("84","28","8","<p><span style=\"color: #993300;\"><strong>Smoothing</strong></span> helps in reducing noise by forcing pixels to be more like their neighbours</p>","2018-07-19 22:44:38","himelkhan.jpg","0"),
+("85","29","1","<p>The answer will be <span style=\"background-color: #ffff00;\">8x100x100</span> because 8 bits will be required to represent a number from 0-256</p>","2018-07-19 22:46:00","sumon.jpg","0"),
+("86","32","1","<p>plot(time, acceleration)</p>","2018-07-19 22:52:41","sumon.jpg","0"),
+("87","34","1","<p>Operating system is a required component of the computer system.</p>\n<p>Without an operating system computer hardware is only an inactive electronic machine, which is inconvenient to user for execution of programs.</p>\n<p>As the computer hardware or machine understands only the machine language. It is difficult to develop each and every program in machine language in order to execute it.</p>\n<p>Thus without operating system execution of user program or to solve user problems is extremely difficult.</p>","2018-07-19 22:58:38","sumon.jpg","0"),
+("88","35","1","<p>The various kind of interactions catered by DBMS are:</p>\n<ul>\n<li>Data definition</li>\n<li>Update</li>\n<li>Retrieval</li>\n<li>Administration</li>\n</ul>","2018-07-19 23:00:28","sumon.jpg","0"),
+("89","36","1","<p>2 Mbps</p>","2018-07-19 23:02:01","sumon.jpg","0"),
+("90","37","1","<pre class=\"language-c\"><code>#include &lt;stdio.h&gt;  \n int main()  \n {  \n     int ara[] = {1, 4, 6, 8, 9, 11, 14, 15, 20, 25, 33 83, 87, 97, 99, 100};  \n     int low_indx = 0;  \n     int high_indx = 15;  \n     int mid_indx;  \n     int num = 97;  \n     while (low_indx &lt;= high_indx) {  \n         mid_indx = (low_indx + high_indx) / 2;  \n         if (num == ara[mid_indx]) {  \n             break;  \n         }  \n         if (num &lt; ara[mid_indx]) {  \n             high_indx = mid_indx &ndash; 1;  \n         }  \n         else {  \n             low_indx = mid_indx + 1;  \n         }  \n     }  \n     if (low_indx &gt; high_indx) {  \n         printf(\"%d is not in the array\n\", num);  \n     }  \n     else {  \n         printf(\"%d is found in the array. It is the %d th element of the array.\n\", ara[mid_indx], mid_indx);  \n     }  \n     return 0;  \n }  </code></pre>","2018-07-19 23:06:39","sumon.jpg","0"),
+("91","37","1","<p>à¦¬à¦¾à¦‚à¦²à¦¾à§Ÿ à¦°à¦¿à¦ªà§à¦²à¦¾à¦‡ à¦¦à§‡à§Ÿà¦¾ à¦¯à¦¾à¦¬à§‡</p>","2018-07-19 23:08:51","sumon.jpg","0");
 
--- --------------------------------------------------------
 
---
--- Table structure for table `category`
---
+
 
 CREATE TABLE `category` (
-  `cat_id` int(11) NOT NULL,
-  `cat_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `cat_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`cat_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `category`
---
 
-INSERT INTO `category` (`cat_id`, `cat_name`) VALUES
-(1, 'Programming'),
-(2, 'Networking'),
-(3, 'Discrete Mathematics'),
-(4, 'Database'),
-(5, 'Operating System'),
-(6, 'Matlab'),
-(7, 'Computer Graphics'),
-(8, 'Image Processing');
+INSERT INTO category VALUES
+("1","Programming"),
+("2","Networking"),
+("3","Discrete Mathematics"),
+("4","Database"),
+("5","Operating System"),
+("6","Matlab"),
+("7","Computer Graphics"),
+("8","Image Processing");
 
--- --------------------------------------------------------
 
---
--- Table structure for table `question`
---
+
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` text NOT NULL,
+  `message` longtext NOT NULL,
+  `mtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `recipient` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO chat VALUES
+("1","11","Hello","2018-07-18 19:17:01","0"),
+("2","11","hi","2018-07-18 19:17:01","0"),
+("3","11","hmm","2018-07-18 19:17:01","0"),
+("4","11","Okay, I think this is working perfectly. Yay!","2018-07-18 19:17:01","0"),
+("5","12","Hey dude!","2018-07-18 19:17:01","0"),
+("6","12","Whassup?","2018-07-18 19:17:01","0"),
+("7","1","hi\n","2018-07-18 19:17:01","0"),
+("8","1","how are you","2018-07-18 19:17:01","0"),
+("9","1","hello\n","2018-07-18 19:17:01","0"),
+("10","2","some message","2018-07-18 19:17:01","0"),
+("21","13","Some text goes here","2018-07-25 19:01:36","0"),
+("22","13","some text ","2018-07-25 19:02:00","8"),
+("23","13","Hello there","2018-07-25 19:03:28","8"),
+("24","8","teststst s st","2018-07-25 19:04:07","13"),
+("25","13","Hello there","2018-07-25 19:04:25","8"),
+("26","13","how are you","2018-07-25 19:12:22","8"),
+("27","13","how are you","2018-07-25 19:18:06","8"),
+("28","13","hello","2018-07-26 01:04:18","8"),
+("29","13","Hello","2018-07-26 01:04:36","9");
+
+
+
 
 CREATE TABLE `question` (
-  `qus_id` int(11) NOT NULL,
+  `qus_id` int(11) NOT NULL AUTO_INCREMENT,
   `cat_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `question` text NOT NULL,
   `post_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `answered` int(11) NOT NULL,
   `view` int(11) NOT NULL,
-  `vote` int(11) NOT NULL
+  `vote` int(11) NOT NULL,
+  PRIMARY KEY (`qus_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO question VALUES
+("28","8","1","Finite difference filters in image processing are very susceptible to noise. To cope up with this, which methods can you use so that there would be minimal distortions by noise?","2018-07-19 22:42:46","1","4","0"),
+("29","8","8","Consider and image with width and height as 100Ã—100. Each pixel in the image can have a color from Grayscale, i.e. values. How much space would this image require for storing?","2018-07-19 22:45:17","1","4","0"),
+("30","7","7","Describe the Z-buffer algorithm and the painter\'s algorithm. For what type of scenes Z-buffer does not perform well? What effects are difficult to implement with Z-buffer? Explain why large difference between the far and near distances in the projection transformation will have a negative effect on Z-buffer performance.","2018-07-19 22:50:34","0","4","0"),
+("31","7","8","Explain what a cubic B-spline curve is, and what are the cubic spline basis functions (you do not have to write the explicit formulas, just state the important properties and sketch a plot). Explain how to compute piecewise-linear approximation to the spline curve using subdivision. How the endpoints can be handled?","2018-07-19 22:51:11","0","2","0"),
+("32","6","7","Which command will create a plot of acceleration vs. time (i.e., a vector time on the x-axis and a vector acceleration on the y-axis)?","2018-07-19 22:52:07","1","4","0"),
+("33","5","1","What are the primary differences between Network Operating System and Distributed Operating System?","2018-07-19 22:53:35","0","4","0"),
+("34","5","1","What inconveniences that a user can face while interacting with a computer system, which is without an operating system?","2018-07-19 22:58:16","1","3","0"),
+("35","4","1","What are the various kinds of interactions catered by DBMS?","2018-07-19 23:00:06","1","4","0"),
+("36","2","1","You have 10 users plugged into a hub running 10Mbps half-duplex. There is a server connected to the switch running 10Mbps half-duplex as well. How much bandwidth does each host have to the server?","2018-07-19 23:01:36","1","12","0"),
+("37","1","8","à¦¬à¦¾à¦‡à¦¨à¦¾à¦°à¦¿ à¦¸à¦¾à¦°à§à¦š à¦•à¦¿à¦­à¦¾à¦¬à§‡ à¦•à¦¾à¦œ à¦•à¦°à§‡ à¦¸à§‡ à¦¬à¦¿à¦·à§Ÿà§‡ à¦¬à¦¿à¦¸à§à¦¤à¦¾à¦°à¦¿à¦¤ à¦œà¦¾à¦¨à¦¤à§‡ à¦†à¦—à§à¦°à¦¹à§€à¥¤ ","2018-07-19 23:04:49","2","21","0");
+
+
+
+
+CREATE TABLE `review` (
+  `rev_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `post` mediumtext NOT NULL,
+  `posttime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `answered` int(11) NOT NULL,
+  `view` int(11) NOT NULL,
+  PRIMARY KEY (`rev_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+INSERT INTO review VALUES
+("3","13","I have Thesis paper to check my spelling and grammerticals","<p>Hello,&nbsp;</p>\n<p>I am working on a image processing thesis. I have prepared my paper but i have to recheck my grammertical and wording. Is there any one who has this skills:</p>\n<ul>\n<li>Image processing</li>\n<li>Image processing algorithm</li>\n<li>Fluent in english</li>\n<li>Good knowledge of english&nbsp;</li>\n</ul>","2018-07-20 01:40:29","0","5");
+
+
+
+
+CREATE TABLE `reviewreply` (
+  `reply_id` int(11) NOT NULL AUTO_INCREMENT,
+  `review_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `reply_detail` text NOT NULL,
+  `reply_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (`reply_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `question`
---
 
-INSERT INTO `question` (`qus_id`, `cat_id`, `user_id`, `question`, `post_time`, `answered`, `view`, `vote`) VALUES
-(1, 2, 1, 'Creating question here', '2018-07-05 08:07:16', 0, 5, 0),
-(2, 6, 3, 'Some question goes here..', '2018-07-05 08:11:29', 0, 1, 0),
-(3, 3, 1, 'Creating a question', '2018-07-05 08:20:47', 0, 0, 0),
-(4, 6, 2, 'Creating a question ,,,,,,,,,,,,,,,,,,,,,,', '2018-07-05 08:21:10', 0, 0, 0),
-(5, 4, 1, 'Some database question ', '2018-07-05 08:22:02', 0, 0, 0),
-(6, 5, 1, 'Creating a question. Some ', '2018-07-05 09:23:38', 0, 0, 0),
-(7, 3, 4, 'Some question description\r\n', '2018-07-05 15:43:31', 0, 0, 0),
-(8, 4, 4, 'Creating a question in database', '2018-07-05 16:12:10', 0, 0, 0),
-(9, 4, 2, 'Creating a question here', '2018-07-05 16:39:41', 0, 0, 0),
-(10, 8, 2, 'Some image processing question', '2018-07-05 16:45:18', 0, 0, 0),
-(11, 5, 2, 'Creating a question here .....', '2018-07-05 17:48:37', 0, 0, 0),
-(12, 5, 1, 'I am creating a question', '2018-07-05 18:18:04', 0, 0, 0),
-(13, 1, 2, 'Creating a question......................', '2018-07-05 19:20:01', 0, 0, 0),
-(14, 2, 2, 'à¦¬à¦¾à¦‚à¦²à¦¾à§Ÿ à¦ªà§à¦°à¦¶à§à¦¨ à¦•à¦°à¦¾ à¦¯à¦¾à¦¬à§‡', '2018-07-05 19:20:57', 0, 1, 0),
-(15, 7, 1, 'Some question from computer graphics\r\n\r\n\r\n\r\nWhat are the', '2018-07-06 05:48:06', 0, 0, 0),
-(16, 4, 1, 'Lets create a question', '2018-07-06 10:04:14', 0, 1, 0),
-(17, 1, 1, 'Creating a awesome question here', '2018-07-06 12:17:24', 0, 0, 0),
-(18, 4, 5, 'Himel creating a quesion', '2018-07-06 13:03:19', 3, 3, 0),
-(19, 2, 1, 'question qusetion question qusetion question qusetion question qusetion question qusetion question qusetion question qusetion ', '2018-07-06 13:17:08', 3, 3, 0),
-(20, 1, 6, 'à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ (à¦¸à¦®à§à¦­à¦¾à¦¬à§à¦¯à¦¤à¦¾) à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ \r\n\r\nà¦¤à§‹ à¦•à§‡à¦‰à¦‡ à¦–à§à¦¬ à¦…à¦¬à¦¾à¦• à¦¹à¦²à§‹ à¦¨à¦¾ à¦¯à¦–à¦¨ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à', '2018-07-07 05:04:37', 0, 3, 0),
-(21, 1, 6, 'à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ (à¦¸à¦®à§à¦­à¦¾à¦¬à§à¦¯à¦¤à¦¾) à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ \r\n\r\nà¦¤à§‹ à¦•à§‡à¦‰à¦‡ à¦–à§à¦¬ à¦…à¦¬à¦¾à¦• à¦¹à¦²à§‹ à¦¨à¦¾ à¦¯à¦–à¦¨ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à¦²à§‡à¦•à§‡ à¦‡à¦‚à¦²à¦¿à¦¶ à¦®à¦¿à¦¡à¦¿à§Ÿà¦¾à¦® à¦¸à§à¦•à§à¦²à§‡ à¦­à¦°à§à¦¤à¦¿ à¦•à¦°à¦¾à¦¨à§‹à¦° à¦œà¦¨à§à¦¯ à¦ªà§à¦°à¦¿à¦ªà¦¾à¦°à§‡à¦¶à¦¨ à¦¨à§‡à§Ÿà¦¾ à¦¶à§à¦°à§ à¦•à¦°à¦²à§‹à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡, à¦­à¦°à§à¦¤à¦¿ à¦ªà¦°à§€à¦•à§à¦·à¦¾à§Ÿ à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦•à¦°à¦¤à§‡ à¦¹à¦¬à§‡à¥¤ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾à¦° à¦›à§‡à¦²à§‡ à¦¶à¦¬à§à¦¦à¦—à§à¦²à§‹à¦° à¦‡à¦‚à¦°à§‡à¦œà¦¿ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦œà¦¾à¦¨à§‡, à¦•à¦¿à¦¨à§à¦¤à§ à¦¸à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦œà¦¾à¦¨à§‡ à¦¨à¦¾à¥¤ à¦à¦–à¦¨ à¦¸à¦®à¦¸à§à¦¯à¦¾ à¦¹à¦šà§à¦›à§‡ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦¨à¦¾ à¦®à¦¾à¦¨à¦²à§‡ à¦ à¦¿à¦• à¦¬à¦¾à¦•à§à¦¯ à¦—à¦ à¦¨ à¦¹à§Ÿ à¦¨à¦¾à¥¤ à¦¯à§‡à¦®à¦¨ à¦§à¦°à§‹, \'à¦¤à§à¦®à¦¿ à¦­à¦¾à¦¤ à¦–à¦¾à¦“\' à¦à¦Ÿà¦¾ à¦¤à§à¦®à¦¿ à¦¯à¦¦à¦¿ à¦‡à¦‚à¦°à§‡à¦œà¦¿à¦¤à§‡ à¦…à¦¨à§à¦¬à¦¾à¦¦ à¦•à¦°à§‡ à¦²à¦¿à¦–à§‹, \'rice eat you\' à¦¤à¦¾à¦¹à¦²à§‡ à¦•à§‡à¦‰ à¦­à¦¾à¦¬à¦¬à§‡ à¦¨à¦¾ à¦¤à§à¦®à¦¿ à¦•à¦¬à¦¿à¥¤ à¦¸à¦¬à¦¾à¦‡ à¦­à¦¾à¦¬à¦¬à§‡ à¦¤à§à¦®à¦¿ à¦¬à§à¦¯à¦¾à¦•à¦°à¦£ à¦œà¦¾à¦¨à§‹ à¦¨à¦¾, à¦•à¦¿à¦‚à¦¬à¦¾ à¦­à¦¾à¦¬à¦¬à§‡ à¦¤à§à¦®à¦¿ à¦šà¦¾à¦šà§à¦›à§‹ à¦­à¦¾à¦¤ à¦¤à§‹à¦®à¦¾à¦•à§‡ à¦–à§‡à§Ÿà§‡ à¦«à§‡à¦²à§à¦•! \r\n\r\nà¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿à¦¤à§‡ à¦¬à¦¿à¦¶à§à¦¬à¦¾à¦¸ à¦•à¦°à§‡à¥¤ à¦¤à§‹ à¦ªà§à¦°à¦¤à¦¿à¦Ÿà¦¾ à¦¬à¦¾à¦•à§à¦¯à§‡à¦° à¦œà¦¨à§à¦¯ à¦Ÿà¦®à¦¿ à¦®à¦¿à§Ÿà¦¾ à¦œà¦¾à¦¨à¦¤à§‡ à¦šà¦¾à§Ÿ à¦¤à¦¾à¦° à¦¬à§œ à¦›à§‡à¦²à§‡à¦° à¦¸à¦ à¦¿à¦• à¦¹à¦¬à¦¾à¦° à¦ªà§à¦°à§‹à¦¬à¦¾à¦¬à¦¿à¦²à¦¿à¦Ÿà¦¿ à¦•à¦¤à§‹à¥¤ ', '2018-07-07 05:06:37', 3, 19, 0),
-(22, 2, 7, 'Networking, also known as computer networking, is the practice of transporting and exchanging data between nodes over a shared medium in an information system. Networking comprises not only the design, construction and use of a network, but also the management, maintenance and operation of the network infrastructure, software and policies.', '2018-07-07 16:28:41', 3, 19, 0),
-(23, 3, 8, 'What is the difference between ac motor and dc motor?', '2018-07-09 06:19:59', 1, 14, 0),
-(24, 3, 1, 'create question', '2018-07-10 18:41:56', 1, 6, 0),
-(25, 4, 1, 'Afsana Islam Dina creating a question to know how does the create question works.', '2018-07-12 07:42:27', 0, 2, 0);
 
--- --------------------------------------------------------
 
---
--- Table structure for table `users`
---
+
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_first` varchar(255) NOT NULL,
   `user_last` varchar(255) NOT NULL,
   `user_name` varchar(255) NOT NULL,
@@ -146,79 +162,28 @@ CREATE TABLE `users` (
   `user_pwd` varchar(255) NOT NULL,
   `user_active` int(2) NOT NULL,
   `user_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `image` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `image` varchar(200) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `users`
---
 
-INSERT INTO `users` (`user_id`, `user_first`, `user_last`, `user_name`, `user_email`, `user_pwd`, `user_active`, `user_created`, `image`) VALUES
-(1, 'Mahmudul Hasan', 'Sumon', 'sumon', 'asas@gmail.com', '$2y$10$bHP7DZ7t8uBEXLOZhkLkyOBmc1hToF7hDAvKb5u9CZqJCR01ktwN2', 0, '2018-07-10 16:26:12', 'sumon.jpg'),
-(2, 'First', 'Last', 'firstlast', 'firstlast@email.com', '$2y$10$yYmukCHC1mDIhdJrcuZ.yeUKu0Wl23PkD1/WeBe7520Yv024Qu17a', 0, '2018-07-10 16:26:12', 'firstlast.jpg'),
-(3, 'Some', 'Name', 'somename', 'somename@gmail.com', '$2y$10$6fmTBX/LgVrhGXG7KmeLwOiP11nMxjIqZTFlBwPyWzx3YRhihEcxW', 0, '2018-07-10 16:26:12', 'somename.jpg'),
-(4, 'Md', 'Rezuan', 'rezuan', 'rezuan@email.com', '$2y$10$chIbDvjzCVlsGnLDh4JkMO8Yo7OXzSaoid2FEJzZZe07V1m2dIvwq', 0, '2018-07-10 16:26:12', 'rezuan.jpg'),
-(5, 'md', 'nam', 'nam', 'nam@email.com', '$2y$10$fEBFnDxJzoZ4IMZQR81CL.oSAmopxaZ0zz5LI.LRDW5PYS.WgVu26', 0, '2018-07-10 16:26:12', 'nam.jpg'),
-(6, 'Kuddos', 'Bayati', 'kuddosbayati', 'kuddus@email.com', '$2y$10$RIG4HGfzPv6Xo4pZkk6Jb.voID4HlIGepGhf3YVgyd3VF4jTL83Ua', 0, '2018-07-10 16:26:12', 'kuddosbayati.jpg'),
-(7, 'Torun', 'Kumar', 'torunkumar', 'torunkumar@email.com', '$2y$10$vh1LYzEUAcmgiIa0Q8M4AeQih.utdVVXYYX3jvNxKVfbgb2bRMV52', 0, '2018-07-10 16:26:12', 'torunkumar.jpg'),
-(8, 'Himel', 'Khan', 'himelkhan', 'himel@email.com', '$2y$10$WTLC8i31N/hmtzPsNn61geSl4VRlSUxlUVgxsS1aOKkzgGrCyWkMW', 0, '2018-07-10 16:26:12', 'himelkhan.jpg');
+INSERT INTO users VALUES
+("1","Mahmudul Hasan","Sumon","sumon","sumon@gmail.com","$2y$10$GBeXWj0iUYarLzXz36vjRenmILlG/YZXao1m6QETVbcRBbCIv.CiS","1","2018-07-10 22:26:12","sumon.jpg"),
+("2","First","Last","firstlast","firstlast@email.com","$2y$10$yYmukCHC1mDIhdJrcuZ.yeUKu0Wl23PkD1/WeBe7520Yv024Qu17a","0","2018-07-10 22:26:12","firstlast.jpg"),
+("3","Some","Name","somename","somename@gmail.com","$2y$10$6fmTBX/LgVrhGXG7KmeLwOiP11nMxjIqZTFlBwPyWzx3YRhihEcxW","0","2018-07-10 22:26:12","somename.jpg"),
+("4","Md","Rezuan","rezuan","rezuan@email.com","$2y$10$chIbDvjzCVlsGnLDh4JkMO8Yo7OXzSaoid2FEJzZZe07V1m2dIvwq","0","2018-07-10 22:26:12","rezuan.jpg"),
+("5","md","nam","nam","nam@email.com","$2y$10$fEBFnDxJzoZ4IMZQR81CL.oSAmopxaZ0zz5LI.LRDW5PYS.WgVu26","0","2018-07-10 22:26:12","nam.jpg"),
+("6","Kuddos","Bayati","kuddosbayati","kuddus@email.com","$2y$10$RIG4HGfzPv6Xo4pZkk6Jb.voID4HlIGepGhf3YVgyd3VF4jTL83Ua","0","2018-07-10 22:26:12","kuddosbayati.jpg"),
+("7","Torun","Kumar","torunkumar","torunkumar@email.com","$2y$10$vh1LYzEUAcmgiIa0Q8M4AeQih.utdVVXYYX3jvNxKVfbgb2bRMV52","0","2018-07-10 22:26:12","torunkumar.jpg"),
+("8","Himel","Khan","himelkhan","himel@email.com","$2y$10$WTLC8i31N/hmtzPsNn61geSl4VRlSUxlUVgxsS1aOKkzgGrCyWkMW","1","2018-07-10 22:26:12","himelkhan.jpg"),
+("9","Md","Ashik","ashik","ashik@email.com","$2y$10$wXBirF8IvSse0H97miH1J..rtNfU2Llly731UF0aChH05m6H0HcTK","0","2018-07-14 20:48:23","ashik.jpg"),
+("10","Mario","Mandzukic","mario17","mario@juventus.com","$2y$10$7.LGSAhzrM3oVyBnakrK4uHyzzI7xN7V/8CLA8yiEiS.P4vV8i1t2","0","2018-07-15 11:26:48","mario17.jpg"),
+("11","Rufty","Handanovic","rufty","rufty@rufty.com","$2y$10$7.LGSAhzrM3oVyBnakrK4uHyzzI7xN7V/8CLA8yiEiS.P4vV8i1t2","0","2018-07-18 01:10:11","rufty.gif"),
+("12","Juan","Handanovic","handanovic","handanovic@mail.com","$2y$10$Xn/Xz5RBST22s4wfAEtTyOyeqiSsUimRYyzUAA4SBklOyML9NZnzm","0","2018-07-18 10:37:40","handanovic.jpg"),
+("13","Mahmudul Hasan","Sumon","admin","admin@gmail.com","$2y$10$HNDGdTxuztE2gSWvEHTe7eokQMisPcaYixodO/J22vHSCd3a4kDlm","0","2018-07-19 01:19:52","admin.jpg");
 
---
--- Indexes for dumped tables
---
 
---
--- Indexes for table `answer`
---
-ALTER TABLE `answer`
-  ADD PRIMARY KEY (`ans_id`);
 
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`cat_id`);
-
---
--- Indexes for table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`qus_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `answer`
---
-ALTER TABLE `answer`
-  MODIFY `ans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `question`
---
-ALTER TABLE `question`
-  MODIFY `qus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

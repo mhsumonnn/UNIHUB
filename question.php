@@ -24,11 +24,12 @@
 		// Updating page view per page load
 		mysqli_query($conn, "UPDATE question SET view = '$view' WHERE qus_id = '$qusID'");
 
-		$userFind  = mysqli_query($conn, "SELECT user_first, user_last, image FROM users WHERE user_id = '$user_id'");
+		$userFind  = mysqli_query($conn, "SELECT user_id, user_first, user_last, image FROM users WHERE user_id = '$user_id'");
 		if(mysqli_num_rows($userFind) == 1){
 			$row = mysqli_fetch_array($userFind);
 			$fullName = $row['user_first'] .' '. $row['user_last'];
 			$propic = 'uploads/profile-pic/'.$row['image'];
+			$userprofile = 'user.php?userId='.$row['user_id'];
 		}
 
 		$qusInfo = 'Answered '.$answered.' / Viewed '.$view;
@@ -50,6 +51,18 @@
                		<div class="main-content-header text-center">
                     	<p class="qn-ans">Question With Answers</p>
                		</div>
+
+               		<?php
+               			if(isset($_GET['qus'])){
+               				$error = $_GET['qus'];
+
+               				if($error = 'update'){
+               					echo '<div class="alert alert-danger text-center">
+								  <strong>Question has been updated.</strong>
+								</div>';
+               				}
+               			}
+               		?>
     
 					<div class="all-ans-area"><!--====== ALL ANSWER AREA START ======-->
 						<div class="media"> <!--====== MEDIA START ======-->
@@ -58,10 +71,20 @@
 							</div>
 					   
 							<div class="media-body"><!--====== MEDIA BODY START ======-->
-								<h4 class="media-heading"><?php echo $fullName;?> asked <?php echo postTime($post_time)?></h4>
+								<h4 class="media-heading"><a href="<?php echo $userprofile;?>"><?php echo $fullName;?></a> asked <?php echo postTime($post_time)?></h4>
 								<p class="qn-area"><span class="question">Question:</span> <?php echo $question?> </p>
 					   
-					   			<p class="ans-time text-right"><?php echo $qusInfo;?></p>
+					   			
+					   			
+					   			<div class="reply-ans-time">
+
+					   				<p class="ans-time-reply text-center"><?php echo $qusInfo;?></p>
+
+					   				<a href="#replysection"><input type="submit" value="Reply"></a>
+
+								</div>
+							
+								</br>
 					   			
 					   			<!-- All replies of this question -->
 								<?php replyList($qusID)?>
@@ -72,7 +95,7 @@
 						 
 						</div><!--====== MEDIA END ======-->				   
 					</div><!--====== ALL ANSWER AREA END ======-->  
-		
+					<div id="replysection"></div>
 					<?php
 						if(isset($_SESSION['uid'])){
 							echo '<div class="reply-ans-area text-center">

@@ -53,5 +53,12 @@
 				<?php categoryList();?>
 
             </div>  <!--====== CATEGORIES AREA END ======-->
+
+
+			<?php 
+				if(isset($_SESSION['uid']))
+					onlineList($_SESSION['uid']);
+			?>
+
 			
         </div>  <!--====== col-md-3 div END ======-->

@@ -37,8 +37,17 @@ if(isset($_POST['submit'])){
 					$_SESSION['email'] = $row['user_email'];
 					$_SESSION['image'] = $row['image'];
 
-					header("Location: ../index.php?login=success");
-					exit();
+					$userId = $_SESSION['uid'];
+					mysqli_query($conn, "UPDATE users SET user_active = '1' WHERE user_id = '$userId'");
+
+					if($_SESSION['uname'] == 'admin'){
+						header("Location: ../adminpage.php");
+						exit();
+					}
+					else{
+						header("Location: ../index.php?login=success");
+						exit();
+					}
 				}
 			}
 		}

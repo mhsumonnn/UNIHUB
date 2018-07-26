@@ -48,10 +48,17 @@ include 'includes/utility.inc.php';
                 <div class="col-md-10">
                     <nav class="menu"><!--====== MENU HERE ======-->
                         <ul>
-                           <li><a href="doc-review.html">DOC REVIEW</a></li>
+                           <li><a href="doc-review.php">DOC REVIEW</a></li>
                            <?php 
-                                if(isset($_SESSION['uid']))
-                                    echo '<li><a href="includes/logout.inc.php">LOGOUT</a></li>';
+                                if(isset($_SESSION['uid'])){
+                                    $userId = $_SESSION['uid'];
+
+                                    $res = mysqli_query($conn, "SELECT user_first, user_last FROM users WHERE user_id = '$userId'");
+                                    $row = mysqli_fetch_assoc($res);
+
+                                    echo '<li><a href="user.php?userId='.$userId.'">Hello, '.$row['user_last'].'</a></li>';
+                                }
+                                    
                            ?>
                         </ul>
                     </nav>

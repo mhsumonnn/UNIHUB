@@ -18,7 +18,7 @@ if (isset($_POST['submit'])){
 		exit();
 	} else {
 		// Check if names has valid character
-		if(!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)){
+		if(!preg_match("/^[a-zA-Z ]*$/", $first) || !preg_match("/^[a-zA-Z ]*$/", $last)){
 			header("Location: ../register.php?reg=invalidchar");
 			exit();
 		} else {
@@ -73,6 +73,8 @@ if (isset($_POST['submit'])){
 						$_SESSION['uname'] = $uname;
 						$_SESSION['email'] = $email;
 						$_SESSION['image'] = $image;
+
+						mysqli_query($conn, "UPDATE users SET user_active = '1' WHERE user_id = '$uid'");
 
 						header("Location: ../index.php?reg=success");
 						exit();

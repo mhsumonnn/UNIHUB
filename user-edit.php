@@ -43,6 +43,51 @@
                      <p class="edit-user-profile-text">Edit Profile</p>
                   </div>
 
+                  <?php
+
+					if(isset($_GET['edit'])){
+						$error = $_GET['edit'];
+
+						if($error == 'empty'){
+							echo '<div class="alert alert-danger text-center">
+							  <strong>One or more input fields is empty.</strong>
+							</div>';
+						}
+						else if($error == 'invalidchar'){
+							echo '<div class="alert alert-danger text-center">
+							  <strong>Real name must contain letters only.</strong>
+							</div>';
+						}
+						else if($error == 'email'){
+							echo '<div class="alert alert-danger text-center">
+							  <strong>Please enter a real email.</strong>
+							</div>';
+						}
+						else if($error == 'emailtaken'){
+							echo '<div class="alert alert-danger text-center">
+							  <strong>Entered Email is already registered. Try anoter one.</strong>
+							</div>';
+						}
+						else if($error == 'usertaken'){
+							echo '<div class="alert alert-danger text-center">
+							  <strong>Sorry! Username is already taken.</strong>
+							</div>';
+						}
+						else if($error == 'passerr'){
+							echo '<div class="alert alert-danger text-center">
+							  <strong>Wrong password entered.</strong>
+							</div>';
+						}
+
+						else if($error == 'notmatched'){
+							echo '<div class="alert alert-danger text-center">
+							  <strong>New passwords did not matched.</strong>
+							</div>';
+						}
+					}
+
+					?>
+
                   <div class="panel-body">
                      <div class="box box-info">
                         <div class="box-body">
@@ -51,7 +96,7 @@
                                 <form action="includes/useredit.inc.php" method="POST" role="form" enctype="multipart/form-data">
                                  	<img alt="User Pic" src="<?php echo $userImage;?>" id="profile-image2" class="img-thumbnail img-responsive"> 
                                  	<input id="profile-image-upload" name="image" class="hidden" type="file">
-                                 	<!-- <input id="imageForm" type="submit" name="imageSubmit" style="display: none"> -->
+                                 	<input id="imageForm" type="submit" name="imageSubmit" style="display: none">
                                 </form>
                               </div>
                               <br>
@@ -105,7 +150,7 @@
                                     <label class="col-md-3 control-label"></label>
                                     <div class="col-md-8">
                                        <input type="hidden" name="userId" value="<?php echo $userId;?>">
-                                       <input class="btn save-chg-btn" name="submit" value="Save Changes" type="submit"">
+                                       <input class="btn save-chg-btn" name="submit" value="Save Changes" type="submit" onclick="submit()">
                                        <span></span>
                                        <input class="btn cancle-btn" id="textForm" value="Reset" type="reset">
                                     </div>

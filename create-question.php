@@ -4,16 +4,16 @@ include 'includes/dbh.inc.php';
 ?>
 
 
-<section class="main-section-area"><!--====== MAIN SECTION AREA START ======-->
+<section class="main-section-area"> <!--====== MAIN SECTION AREA START ======-->
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-					<div class="input-group search-box"><!--====== SEARCH BOX ======-->
-						<form class="search" action="search.php" method="POST">
-							<input type="text" name="search" class="searchTerm" placeholder="Search Content Here.....">
-							<input type="submit" name="submit" value="Search" class="searchButton">
-						</form>
-					</div>
+				<div class="input-group search-box"><!--====== SEARCH BOX ======-->
+					<form class="search" action="search.php" method="POST">
+						<input type="text" name="search" class="searchTerm" placeholder="Search Content Here.....">
+						<input type="submit" name="submit" value="Search" class="searchButton">
+					</form>
+				</div>
 				
 				<div class="create-qn-area"><!--CREATE QN AREA START-->
 					<div class="qn-content-header text-center">

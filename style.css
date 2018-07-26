@@ -8,12 +8,17 @@
     font-style: normal;
 }
 
+html{
+	height: 100%
+}
+
 body{
 	margin:0;
 	font-family: 'Montserrat', sans-sarif;
 	font-weight: 400;
 	background-color: #EBEDEF;
 	padding-top: 90px;
+	height: 100%
 }
 
 
@@ -73,7 +78,13 @@ nav.menu ul li a:hover, nav.menu ul li a:active{
 /*--================MAIN SECTION AREA===============*/
 
 .main-section-area{
-	margin-top: 8px;
+	padding-top: 8px;
+	min-height: 100%
+}
+
+.main-section-area .container{
+	overflow: auto;
+	padding-bottom: 100px;
 }
 
 
@@ -230,10 +241,21 @@ ul.pagination li a:hover{
 
 /*--====== ans-time class======--*/
 
-.ans-time{
+.ans-time-reply{
 	font-size: 12px;
 	color: #B9BBC1;
-	margin-right: 19px;
+	float: left;
+}
+
+.reply-ans-time input[type="submit"]{
+	width: 9%;
+	height: 30px;
+	color: #ffffff;
+	background-color: #009688;
+	border: none;
+	border-radius: 4px;
+	font-size:14px;
+	float: right;
 }
 
 /*--====== qn-area class======--*/
@@ -543,6 +565,14 @@ ul.list-group a li:hover, ul.list-group a li:active
 	font-size: 14px;
 }
 
+#chatcircle {
+    float: right;
+    width: 9px;
+    height: 9px;
+    background-color: #ADFF2F;
+    border-radius: 50%;
+}
+
 
 
 
@@ -551,17 +581,20 @@ ul.list-group a li:hover, ul.list-group a li:active
 .footer-area{
 	background-color: #31344F;
     width: 100%;
+    position: relative;
+    height: 80px;
+    margin-top: -80px;
+    clear: both;
 }
 
 .footer-area p{
-	padding-top:30px;
-	padding-bottom: 20px;
-	color:#D0D1D5;
-	font-size: 16px;
+	padding-top: 30px;
+	color: #D0D1D5;
+	font-size: 14px;
 }
 
 .glyphicon{
-	color:#E91E63;
+	color: #E91E63;
 }
 
 /*--====================HOME PAGE STYLE END======================*/
@@ -1115,7 +1148,7 @@ margin-top: 4px;
 font-size: 14px;
 background-color: #009688;
 color: #ffffff;
-width: 102px;
+/* width: 102px; */
 
 }
 
@@ -1262,7 +1295,7 @@ color: #ffffff;
 .single-chat-box.reply .chat-spech {
   background-color: #009688;
   color: #fff;
-  margin-left: 0px;
+  margin-left: 100px;
   margin-right: 80px;
 }
 .single-chat-box.reply > a {
@@ -1316,4 +1349,50 @@ color: #ffffff;
   position: absolute;
   right: 40px;
   top: 23px;
+}
+
+
+
+/*--========== Admin Page============*/
+
+
+.panel-default > .panel-heading {
+	background-color: #31344F;
+	height: 45px;
+}
+
+.overview-heading h3{
+	color: #ffffff;
+	font-size: 18px;
+}
+
+.dash-box {
+	text-align: center;
+}
+
+.dash-box h2 .glyphicon {
+	color:#0B7F7A;;
+}
+
+
+.dash-board .list-group a{
+	color: #ffffff;
+}
+
+.dash-board .list-group a:hover{
+	background-color: #31344F;
+	border-bottom-style: dotted;
+
+}
+
+
+.dash-board .list-group a:active,
+.dash-board .list-group a:focus {
+	background-color: #31344F;
+}
+
+
+.dash-board .list-group a .glyphicon{
+	color: #0B7F7A;
+	margin-right: 10px;
 }
