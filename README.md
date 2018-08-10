@@ -1,7 +1,7 @@
 # UNIHUB
 
-UNIHUB is a knowledge sharing Question and Answer website.
+UNIHUB is a knowledge sharing Question and Answer website. The site was developed as Software Development Project in CSE Graduation
 
-Font End Technology: HTML, CSS, JAVASCRIPT, JQUERY
+Font End Technology: HTML, CSS, JavaScript, jQUERY
 
-Backend Technology: Procedural PHP, MYSQLI
+Backend Technology: Procedural PHP, MySQLi
